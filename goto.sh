@@ -2,10 +2,12 @@
 
 # My :goto Websites and Apps
 targets=(
- "localhost:http://localhost:3000"
- "localhost:http://localhost:3001"
+ "Frontend:http://localhost:3000"
+ "GraphQL:http://localhost:3000/api/graphql"
+ "Backend:http://localhost:3001"
  "Google:https://www.google.com" 
  "GitHub:https://github.com/colson0x1" 
+ "Github Repositories:https://github.com/colson0x1?tab=repositories"
  "Stack Overflow:https://stackoverflow.com"
  "YouTube:https://youtube.com"
  "Spotify:spotify"
