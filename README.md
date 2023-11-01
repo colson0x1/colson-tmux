@@ -26,9 +26,9 @@ This repository contains my configuration files for [tmux](https://github.com/tm
 
 ![tmux colson](https://i.imgur.com/FBIWhK8.png)
 
-![tmux colson](https://i.imgur.com/ik3Rnfr.png)
+![tmux colson](https://i.imgur.com/NPvhp9P.png)
 
-![tmux colson](https://i.imgur.com/VcFZ9e8.png)
+![tmux colson](https://i.imgur.com/MyLtxrv.png)
 
 ## Prerequisites
 
