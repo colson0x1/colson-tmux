@@ -2,6 +2,8 @@
 
 # My :goto Websites and Apps
 targets=(
+ "localhost:http://localhost:3000"
+ "localhost:http://localhost:3001"
  "Google:https://www.google.com" 
  "GitHub:https://github.com/colson0x1" 
  "Stack Overflow:https://stackoverflow.com"
