@@ -7,6 +7,7 @@ This repository contains my configuration files for [tmux](https://github.com/tm
 - [Tmux Configuration](#tmux-configuration)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
+  - [Screenshots](#screenshots)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
     - [Installation](#installation)
@@ -20,6 +21,14 @@ This repository contains my configuration files for [tmux](https://github.com/tm
 2. **Website and App Launcher**: A Zsh script that lets you launch websites and applications with a simple selection.
 3. **Plugin Management**: Uses [tpm](https://github.com/tmux-plugins/tpm) for managing tmux plugins.
 4. **Catppuccin Theme**: Aesthetic improvements with the Catppuccin theme.
+   
+## Screenshots
+
+![tmux colson](https://i.imgur.com/FBIWhK8.png)
+
+![tmux colson](https://i.imgur.com/ik3Rnfr.png)
+
+![tmux colson](https://i.imgur.com/VcFZ9e8.png)
 
 ## Prerequisites
 
@@ -72,4 +81,4 @@ Here are the key bindings you can use in tmux:
 
 ## Customization
 
-You can customize your tmux configuration and the list of websites and applications in `goto.sh` to suit your preferences.
+You can customize your tmux configuration and the list of websites and applications in `goto.sh` to suit your preferences. 
