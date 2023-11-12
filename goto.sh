@@ -2,15 +2,17 @@
 
 # My :goto Websites and Apps
 targets=(
- "Frontend:http://localhost:3000"
+ "Client:http://localhost:3000"
  "GraphQL:http://localhost:3000/api/graphql"
- "Backend:http://localhost:3001"
+ "Server:http://localhost:3001"
  "Google:https://www.google.com" 
  "GitHub:https://github.com/colson0x1" 
  "Github Repositories:https://github.com/colson0x1?tab=repositories"
+ "Chat GPT:https://chat.openai.com"
  "Stack Overflow:https://stackoverflow.com"
  "YouTube:https://youtube.com"
  "Spotify:spotify"
+ "Discord:discord"
  "Instagram:https://instagram.com"
  "Messenger:https://messenger.com"
  "Gmail:https://mail.google.com"
@@ -38,6 +40,9 @@ open_target() {
     case "$1" in
       spotify)
         open -a "Spotify" "spotify:" # Open Spotify on macOS
+        ;;
+      discord)
+        open -a "Discord" "discord:" # Open Discord on macOs
         ;;
       google-chrome)
         open -a "Google Chrome" # Open Chrome on macOS
