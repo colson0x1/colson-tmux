@@ -2,15 +2,17 @@
 
 # My :goto Websites and Apps
 targets=(
- "Client:http://localhost:3000"
+ "cl Client:http://localhost:3000"
  "GraphQL:http://localhost:3000/api/graphql"
- "Server:http://localhost:3001"
+ "api Server:http://localhost:4004"
  "Google:https://www.google.com" 
- "GitHub:https://github.com/colson0x1" 
- "Github Repositories:https://github.com/colson0x1?tab=repositories"
+ "gh GitHub:https://github.com/colson0x1" 
+ "rp Github Repo:https://github.com/colson0x1?tab=repositories"
+ "nr New Repo:https://github.com/new"
  "Chat GPT:https://chat.openai.com"
  "Stack Overflow:https://stackoverflow.com"
- "YouTube:https://youtube.com"
+ "tr Typeracer:https://play.typeracer.com"
+ "yt YouTube:https://youtube.com"
  "Spotify:spotify"
  "Discord:discord"
  "Instagram:https://instagram.com"
