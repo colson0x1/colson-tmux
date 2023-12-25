@@ -1,6 +1,6 @@
 # Tmux Configuration
 
-This repository contains my configuration files for [tmux](https://github.com/tmux/tmux), a terminal multiplexer, and a handy shell script that I wrote to launch websites and applications with ease from the terminal. 🔥
+Unlock the full potential of your terminal with this meticulously crafted tmux configuration, accompanied by a versatile Zsh script for effortlessly launching websites and applications. 🔥
 
 ## Table of Contents
 
@@ -17,11 +17,11 @@ This repository contains my configuration files for [tmux](https://github.com/tm
 
 ## Features
 
-1. **tmux Configuration**: A comprehensive tmux configuration to enhance your terminal experience.
-2. **Website and App Launcher**: A Zsh script that lets you launch websites and applications with a simple selection.
-3. **Plugin Management**: Uses [tpm](https://github.com/tmux-plugins/tpm) for managing tmux plugins.
-4. **Catppuccin Theme**: Aesthetic improvements with the Catppuccin theme.
-   
+1. **Enhanced Tmux Configuration**: Elevate your terminal experience with a comprehensive tmux setup tailored for efficiency.
+2. **Web and App Launcher**: Seamlessly launch websites and applications through an intuitive Zsh script.
+3. **Plugin Management with TPM**: Utilizes [Tmux Plugin Manager (TPM)](https://github.com/tmux-plugins/tpm) for hassle-free tmux plugin management.
+4. **Catppuccin Theme**: Elevate aesthetics with the visually pleasing Catppuccin theme.
+
 ## Screenshots
 
 ![tmux colson](https://i.imgur.com/FBIWhK8.png)
@@ -32,46 +32,66 @@ This repository contains my configuration files for [tmux](https://github.com/tm
 
 ## Prerequisites
 
-Before you start, ensure you have the following prerequisites:
+Before diving in, ensure you have the following prerequisites:
 
-- [tmux](https://github.com/tmux/tmux): Make sure tmux is installed on your system.
-- [fzf](https://github.com/junegunn/fzf): The fuzzy finder tool for interactive selection.
+- [tmux](https://github.com/tmux/tmux): Ensure tmux is installed on your system.
+- [fzf](https://github.com/junegunn/fzf): Install the fuzzy finder tool for interactive selection.
 
 ## Getting Started
 
 ### Installation
+1. Begin by installing TPM (Tmux Plugin Manager):
+   ```shell
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   ```
 
-1. Clone this repository into your home directory:
-
+2. Clone this repository into your home directory:
    ```shell
    git clone https://github.com/colson0x1/tmux ~/.config/tmux
    ```
 
-2. Reload your tmux environment to apply the configuration:
-
+3. Reload your tmux environment to apply the configuration:
    ```shell
    tmux source-file ~/.config/tmux/tmux.conf
    ```
 
-3. Make the `goto.sh` script executable:
-
+4. Make the `goto.sh` script executable:
    ```shell
    chmod +x ~/.config/tmux/goto.sh
    ```
 
-4. You're all set! You can now launch websites and applications using `goto.sh`.
+5. You're all set! Launch websites and applications using `goto.sh`.
 
-### Usage
+### Install Tmux Plugins
+1. Open tmux:
+   ```shell
+   tmux
+   ```
+2. Navigate to the tmux directory:
+   ```shell
+   cd ~/.config/tmux
+   ```
+3. Use Neovim to open the configuration:
+   ```shell
+   nvim .
+   ```
+4. Go to `tmux.conf`:
+   ```shell
+   leader+shift+i
+   ```
+   (Note: Leader key is `Ctrl+Space`, so use `Ctrl+Space` and `Shift+i`)
+
+## Usage
 
 - Press `ctrl+space` to activate the leader key.
-- Use `M-K` and `M-J` to switch between windows.
-- Split the terminal horizontally with `leader + -` and vertically with `leader + |`.
-- Launch websites and applications with `leader + o`.
-- Customize your website and app choices in `goto.sh`.
+- Switch between windows with `M-K` and `M-J`.
+- Split the terminal horizontally (`leader + -`) and vertically (`leader + |`).
+- Launch websites and apps with `leader + o`.
+- Customize website and app choices in `goto.sh`.
 
 ## Key Bindings
 
-Here are the key bindings you can use in tmux:
+Master these key bindings for efficient tmux navigation:
 
 - **Leader Key**: `ctrl+space`
 - **Window Switching**: `Shift+Alt+j` and `Shift+Alt+k`
@@ -81,4 +101,4 @@ Here are the key bindings you can use in tmux:
 
 ## Customization
 
-You can customize your tmux configuration and the list of websites and applications in `goto.sh` to suit your preferences. 
+Tailor your tmux configuration and the list of websites and applications in `goto.sh` to match your preferences. Dive into the endless possibilities of customization and make your terminal truly yours.
