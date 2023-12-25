@@ -1,4 +1,4 @@
-# Nvim alias for vim
+# Vim alias for Nvim
 alias vim='nvim'
 
 # Enable Vim in Zsh
@@ -69,3 +69,7 @@ alias gbrd="git push origin --delete"
 alias gmv="git branch -m"
 # Interactive rebase
 alias grebase="git rebase -i"
+# Reset the working directory and staging area to HEAD
+alias grhead="git reset --hard HEAD"
+# Reset the working directory and staging area to a specific commit hash
+alias grhash="git reset --hard"
