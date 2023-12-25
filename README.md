@@ -1,4 +1,4 @@
-# Tmux Configuration
+# Tmux Configuration with Zsh Goodness
 
 Unlock the full potential of your terminal with this meticulously crafted tmux configuration, accompanied by a versatile Zsh script for effortlessly launching websites and applications. 🔥
 
@@ -101,4 +101,4 @@ Master these key bindings for efficient tmux navigation:
 
 ## Customization
 
-Tailor your tmux configuration and the list of websites and applications in `goto.sh` to match your preferences. Dive into the endless possibilities of customization and make your terminal truly yours.
+Tailor your tmux configuration and the list of websites and applications in `goto.sh` to match your preferences. Dive into the endless possibilities of customization and make your terminal truly yours. Additionally, explore the power of Zsh with a rich set of aliases and Git shortcuts in the included `.zshrc` file.
