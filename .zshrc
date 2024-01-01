@@ -77,4 +77,10 @@ alias grhash="git reset --hard"
 alias gpushmain="git push origin main"
 
 # Create a new React app using Create React App
-alias cra ="npx create-react-app"
+alias cra="npx create-react-app"
+
+# /* Zsh and Tmux Reload */
+# Reload Zsh configuration
+alias zshrl="source ~/.zshrc"
+# Reload Tmux configuration
+alias tmuxrl="tmux source ~/.config/tmux/tmux.conf"
