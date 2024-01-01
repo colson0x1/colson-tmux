@@ -73,3 +73,8 @@ alias grebase="git rebase -i"
 alias grhead="git reset --hard HEAD"
 # Reset the working directory and staging area to a specific commit hash
 alias grhash="git reset --hard"
+# Push changes to the remote repository (assuming the branch is 'main')
+alias gpushmain="git push origin main"
+
+# Create a new React app using Create React App
+alias cra ="npx create-react-app"
