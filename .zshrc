@@ -76,10 +76,20 @@ alias gri="git rebase -i"
 alias gch="git checkout"
 # Push changes to the remote repository (assuming the branch is 'main')
 alias gpm="git push origin main"
+# Add specific file
+alias gaf="git add"
+# Reset the current branch to the latest commit in the remote repository
+alias grh="git reset --hard HEAD"
+# Reset the current branch to the commit before the latest commit in the remote repository
+alias grh1="git reset --hard HEAD~1"
+# Push the local changes forcefully to the 'main' branch in the remote repository
+alias gpmf='git push origin main --force'
 
 
 # Create a new React app using Create React App
 alias cra="npx create-react-app"
+# Create a new React app using VITE 
+alias cva="npm create vite@latest"
 
 # /* Zsh and Tmux Reload */
 # Reload Zsh configuration
