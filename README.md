@@ -4,14 +4,17 @@ Unlock the full potential of your terminal with this meticulously crafted tmux c
 
 ## Table of Contents
 
-- [Tmux Configuration](#tmux-configuration)
+- [Tmux Configuration with Zsh Goodness](#tmux-configuration-with-zsh-goodness)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Screenshots](#screenshots)
+    - [✨ New Look (Colson TMUX)](#-new-look-colson-tmux)
+    - [💎 Old Look (Colson TMUX)](#-old-look-colson-tmux)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
     - [Installation](#installation)
-    - [Usage](#usage)
+    - [Install Tmux Plugins](#install-tmux-plugins)
+  - [Usage](#usage)
   - [Key Bindings](#key-bindings)
   - [Customization](#customization)
 
@@ -24,6 +27,10 @@ Unlock the full potential of your terminal with this meticulously crafted tmux c
 
 ## Screenshots
 
+### ✨ New Look (Colson TMUX)
+![colson tmux](https://i.imgur.com/4PhRgHQ.png)
+
+### 💎 Old Look (Colson TMUX)
 ![tmux colson](https://i.imgur.com/FBIWhK8.png)
 
 ![tmux colson](https://i.imgur.com/f4QwGKs.png)
