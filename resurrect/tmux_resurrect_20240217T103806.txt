@@ -1,0 +1,13 @@
+pane	nvim	0	1	:*	0	COLSON	:/home/colson/.config/nvim	1	nvim	:nvim .
+pane	nvim	1	0	:-	0	COLSON	:/home/colson/.config/nvim	1	zsh	:
+pane	quizwiz	0	0	:-	0	COLSON	:/home/colson/reactprod/QuizWiz	1	nvim	:nvim .
+pane	quizwiz	1	0	:	0	COLSON	:/home/colson/reactprod/QuizWiz	1	npm	:npm run dev
+pane	quizwiz	2	0	:	0	COLSON	:/home/colson/reactprod/QuizWiz	1	zsh	:
+pane	quizwiz	3	1	:*	0	COLSON	:/home/colson/reactprod/QuizWiz	1	nvim	:nvim .
+window	nvim	0	:nvim	1	:*	5eb6,105x25,0,0,17	:
+window	nvim	1	:zsh	0	:-	5eb7,105x25,0,0,18	:
+window	quizwiz	0	:nvim	0	:-	bcfd,105x25,0,0,0	:
+window	quizwiz	1	:npm	0	:	bcfe,105x25,0,0,1	:
+window	quizwiz	2	:zsh	0	:	bcff,105x25,0,0,2	:
+window	quizwiz	3	:nvim	1	:*	bd00,105x25,0,0,3	:
+state	nvim	quizwiz
