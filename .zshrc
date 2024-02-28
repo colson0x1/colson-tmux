@@ -90,6 +90,8 @@ alias gpmf='git push origin main --force'
 alias cra="npx create-react-app"
 # Create a new React app using VITE 
 alias cva="npm create vite@latest"
+# Create a new NEXT app
+alias cna="npx create-next-app@latest"
 
 # /* Zsh and Tmux Reload */
 # Reload Zsh configuration
