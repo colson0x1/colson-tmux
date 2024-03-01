@@ -28,9 +28,11 @@ Unlock the full potential of your terminal with this meticulously crafted tmux c
 ## Screenshots
 
 ### ✨ New Look (Colson TMUX)
-![colson tmux](https://i.imgur.com/4PhRgHQ.png)
+
+![colson tmux](https://i.imgur.com/wDSlYW4.png)
 
 ### 💎 Old Look (Colson TMUX)
+
 ![tmux colson](https://i.imgur.com/FBIWhK8.png)
 
 ![tmux colson](https://i.imgur.com/f4QwGKs.png)
@@ -47,22 +49,27 @@ Before diving in, ensure you have the following prerequisites:
 ## Getting Started
 
 ### Installation
+
 1. Begin by installing TPM (Tmux Plugin Manager):
+
    ```shell
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
    ```
 
 2. Clone this repository into your home directory:
+
    ```shell
    git clone https://github.com/colson0x1/tmux ~/.config/tmux
    ```
 
 3. Reload your tmux environment to apply the configuration:
+
    ```shell
    tmux source-file ~/.config/tmux/tmux.conf
    ```
 
 4. Make the `goto.sh` script executable:
+
    ```shell
    chmod +x ~/.config/tmux/goto.sh
    ```
@@ -70,6 +77,7 @@ Before diving in, ensure you have the following prerequisites:
 5. You're all set! Launch websites and applications using `goto.sh`.
 
 ### Install Tmux Plugins
+
 1. Open tmux:
    ```shell
    tmux
@@ -109,3 +117,5 @@ Master these key bindings for efficient tmux navigation:
 ## Customization
 
 Tailor your tmux configuration and the list of websites and applications in `goto.sh` to match your preferences. Dive into the endless possibilities of customization and make your terminal truly yours. Additionally, explore the power of Zsh with a rich set of aliases and Git shortcuts in the included `.zshrc` file.
+
+Peace!
