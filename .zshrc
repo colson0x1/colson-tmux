@@ -98,3 +98,34 @@ alias cna="npx create-next-app@latest"
 alias zshrl="source ~/.zshrc"
 # Reload Tmux configuration
 alias tmuxrl="tmux source ~/.config/tmux/tmux.conf"
+
+# Docker aliases
+alias d="docker"
+alias dps="docker ps"
+alias di="docker images"
+alias db="docker build -t"
+alias dr="docker run -it --rm"
+alias dex="docker exec -it"
+alias dst="docker stop"
+alias drm="docker rm"
+alias drmi="docker rmi"
+
+# Kubernetes aliases
+alias k="kubectl"
+alias kgp="kubectl get pods"
+alias kgs="kubectl get services"
+alias kga="kubectl get all"
+alias kd="kubectl describe"
+alias kdel="kubectl delete"
+alias kaf="kubectl apply -f"
+alias kl="kubectl logs"
+alias ke="kubectl exec -it"
+
+# Function for switching namespaces
+# $ kns development
+# $ kubectl get pods  # Now we're working in the development namespace
+# $ kns production
+# $ kubectl get pods  # Now we're working in the production namespace
+kns() {
+  kubectl config set-context --current --namespace="$1"
+}
