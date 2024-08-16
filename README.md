@@ -29,9 +29,25 @@ Unlock the full potential of your terminal with this meticulously crafted tmux c
 
 ### ✨ New Look (Colson TMUX)
 
-![colson tmux](https://i.imgur.com/wDSlYW4.png)
+![colson tmux](https://i.imgur.com/0L5W67y.png)
+
+![colson tmux](https://i.imgur.com/vTT8rNM.png)
+
+![colson tmux](https://i.imgur.com/8vwzLQO.png)
+
+![colson tmux](https://i.imgur.com/rO18Azi.png)
+
+![colson tmux](https://i.imgur.com/AJz6jJs.png)
+
+![colson tmux](https://i.imgur.com/5t1E1wZ.png)
+
+![colson tmux](https://i.imgur.com/upWkGmY.png)
+
+![colson tmux](https://i.imgur.com/0OLvIgL.png)
 
 ### 💎 Old Look (Colson TMUX)
+
+![colson tmux](https://i.imgur.com/wDSlYW4.png)
 
 ![tmux colson](https://i.imgur.com/FBIWhK8.png)
 
@@ -74,7 +90,25 @@ Before diving in, ensure you have the following prerequisites:
    chmod +x ~/.config/tmux/goto.sh
    ```
 
-5. You're all set! Launch websites and applications using `goto.sh`.
+5. Add `.zshrc` to root on your machine:
+
+   ```shell
+   cat ~/.config/tmux/.zshrc >> ~/.zshrc
+   ```
+
+6. Restart your Terminal.
+
+   ```shell
+   $ source ~/.zshrc
+   $ zshrl
+   $ tmuxrl
+   ```
+
+7. You're all set! Launch websites and applications using `goto.sh`.
+   ```
+   <leader>+o
+   ```
+   NOTE: Leader in tmux is: `Ctrl+Space`
 
 ### Install Tmux Plugins
 
