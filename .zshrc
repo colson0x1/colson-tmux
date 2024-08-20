@@ -21,13 +21,15 @@ alias tn="tmux select-window -n"
 # Switch to the previous tmux window
 alias tp="tmux select-window -p"
 # Split the tmux window horizontally
-alias ths="tmux split-window -h"
+alias ths="tmux split-window -h"chage bash to zsh
 # Split the tmux window vertically
 alias tvs="tmux split-window -v"
 
 
 # /* @ GIT Aliases */
 # GIT Aliases
+# Normal Git Status
+alias gst="git status"
 # Abbreviated Git status
 alias gs="git status -sb"
 # Readable Git log
@@ -84,7 +86,8 @@ alias grh="git reset --hard HEAD"
 alias grh1="git reset --hard HEAD~1"
 # Push the local changes forcefully to the 'main' branch in the remote repository
 alias gpmf='git push origin main --force'
-
+# See detail information such as local or remote branch in use
+alias gbs="git branch -vva"
 
 # Create a new React app using Create React App
 alias cra="npx create-react-app"
@@ -129,3 +132,10 @@ alias ke="kubectl exec -it"
 kns() {
   kubectl config set-context --current --namespace="$1"
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/colson/google-cloud-sdk/path.zsh.inc' ]; then . '/home/colson/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/colson/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/colson/google-cloud-sdk/completion.zsh.inc'; fi
+
