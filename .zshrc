@@ -1,4 +1,6 @@
-# Nvim alias for vim
+# @ COLSON personalized alias for Software Development Productivity 
+
+# NVIM alias for vim
 alias vim='nvim'
 
 # Enable Vim in Zsh
@@ -56,8 +58,10 @@ alias gcam="git commit --amend -m"
 alias gp="git push"
 # Pull the latest changes from the remote
 alias gpl="git pull"
+alias gplm="git pull origin main"
 # Fetch the latest changes from the remote
 alias gf="git fetch"
+alias gfm="git fetch origin main"
 # Colored and condensed git reflog
 alias grl="git reflog --pretty=format:'%C(auto)%h%Creset %C(auto)%gs%Creset %C(bold blue)<%an>%Creset %C(green)%gd%Creset %C(bold red)%gs%Creset %C(red)%cr%Creset'"
 # Diff of a specific commit
@@ -88,6 +92,40 @@ alias grh1="git reset --hard HEAD~1"
 alias gpmf='git push origin main --force'
 # See detail information such as local or remote branch in use
 alias gbs="git branch -vva"
+
+# @ Git Alias Shortcuts for Monorepo Workflow
+
+# Check the status of all submodules
+alias gsms='g submodule foreach g status'
+alias gsmst='g submodule foreach g status'
+# Usage: gsms or gsmst
+# This will check the status of all submodules in the repository.
+
+# Stage all changes, including submodules
+alias gasm='g add -A && g submodule foreach g add -A'
+# Usage: gasm
+# This will stage all changes in the main repo and in all submodules.
+
+# Commit with a message
+alias gsc='g commit -m'
+# Usage: gsc "Your commit message"
+# This will commit the staged changes with the specified message.
+
+# Show all staged files, including submodules
+alias gstg='g diff --cached && g submodule foreach g diff --cached'
+# Usage: gstg
+# This will display the differences of all staged files, including submodules.
+
+# Check for untracked files, including submodules
+alias gunt='g ls-files --others --exclude-standard && g submodule foreach g ls-files --others --exclude-standard'
+# Usage: gunt
+# This will show all untracked files in the main repo and submodules.
+
+# Force add and commit all changes, including submodules
+alias gsf='g add -A && g commit -am "Auto commit changes" && g submodule foreach "g add -A && g commit -am Auto commit submodule changes"'
+# Usage: gsf
+# This will force add and commit all changes with a predefined message for both the main repo and all submodules.
+
 
 # Create a new React app using Create React App
 alias cra="npx create-react-app"
@@ -139,3 +177,7 @@ if [ -f '/home/colson/google-cloud-sdk/path.zsh.inc' ]; then . '/home/colson/goo
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/colson/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/colson/google-cloud-sdk/completion.zsh.inc'; fi
 
+# NVIM 
+alias nv="nvim ."
+# Clear terminal
+alias cl="clear"
