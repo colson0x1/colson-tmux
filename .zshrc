@@ -181,3 +181,8 @@ if [ -f '/home/colson/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/cols
 alias nv="nvim ."
 # Clear terminal
 alias cl="clear"
+
+# Start tmux session if none exists
+if [ -z "$TMUX" ] && [ -z "$TMUX_SESSION" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
