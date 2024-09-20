@@ -113,7 +113,8 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
+eval "$(ng completion script)"
 export PATH=$PATH:/Users/colson/.spicetify
 
 # bun completions
