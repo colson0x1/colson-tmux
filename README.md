@@ -4,7 +4,7 @@ Unlock the full potential of your terminal with this meticulously crafted tmux c
 
 ## Installation through NPM
 
-Ensure **Tmux** is installed on your machine!
+Ensure **Tmux** is installed on your machine!  
 **`Tmux leader key`**: `<ctrl>+<space>`
 
 ```shell
