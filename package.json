@@ -1,0 +1,60 @@
+{
+  "name": "colson-tmux",
+  "version": "1.0.0",
+  "description": "Colson Tmux: Tmux for Software Engineers!",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "tmux/**/*"
+  ],
+  "scripts": {
+    "clean": "del ./dist/*",
+    "build": "npm run clean && tsc",
+    "postinstall": "node dist/index.js"
+  },
+  "bin": {
+    "colson-tmux": "./dist/index.js",
+    "exec": "./dist/index.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colson0x1/colson-tmux.git"
+  },
+  "keywords": [
+    "colson-tmux",
+    "tmux",
+    "tmux config",
+    "tmux configuration",
+    "tmux plugins",
+    "tmux plugin manager",
+    "tpm",
+    "tmux colson",
+    "terminal multiplexer",
+    "tmux setup",
+    "dotfiles",
+    "zshrc",
+    "shell configuration",
+    "terminal customization",
+    "developer tools",
+    "cli tools",
+    "software engineers",
+    "tmux for software engineers",
+    "developer productivity"
+  ],
+  "author": "COLSON",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/colson0x1/colson-tmux/issues"
+  },
+  "homepage": "https://github.com/colson0x1/colson-tmux#readme",
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "del-cli": "^5.1.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  }
+}
