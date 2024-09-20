@@ -7,14 +7,42 @@ const __dirname = path.dirname(__filename);
 const TMUX_CONFIG_PATH = path.join(getHomeDirectory(), '.config', 'tmux');
 const LOCAL_TMUX_CONFIG = path.join(__dirname, '..', 'tmux');
 const ZSHRC_PATH = path.join(getHomeDirectory(), '.zshrc');
+const isZshInstalled = () => {
+    try {
+        runCommand('zsh --version');
+        return true;
+    }
+    catch {
+        return false;
+    }
+};
+const isOhMyZshInstalled = () => {
+    return fs.existsSync(path.join(getHomeDirectory(), '.oh-my-zsh'));
+};
+const installOhMyZsh = () => {
+    console.log('Installing Oh My Zsh...');
+    runCommand('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended');
+    console.log('Oh My Zsh installed successfully.');
+};
 export const installTmuxConfig = async () => {
-    console.log('Installing tmux configuration...');
+    console.log('Starting the setup process...');
+    if (!isZshInstalled()) {
+        console.error('Zsh is not installed. Please install Zsh and try again.');
+        process.exit(1);
+    }
+    if (!isOhMyZshInstalled()) {
+        installOhMyZsh();
+    }
+    else {
+        console.log('Oh My Zsh is already installed.');
+    }
+    console.log('Installing Tmux configuration...');
     await fs.ensureDir(TMUX_CONFIG_PATH);
     await fs.copy(LOCAL_TMUX_CONFIG, TMUX_CONFIG_PATH, {
         overwrite: true,
-        filter: (src) => !src.includes('.zshrc'),
+        filter: (src) => !src.includes('.zshrc'), // Exclude .zshrc from this copy
     });
-    console.log('tmux configuration copied to ~/.config/tmux');
+    console.log('Tmux configuration copied to ~/.config/tmux');
     await fs.copy(path.join(LOCAL_TMUX_CONFIG, '.zshrc'), ZSHRC_PATH, {
         overwrite: true,
     });
@@ -28,4 +56,5 @@ export const installTmuxConfig = async () => {
     else {
         console.log('TPM is already installed.');
     }
+    // console.log('Setup complete. Tmux environment is ready!');
 };
