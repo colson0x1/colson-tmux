@@ -1,6 +1,34 @@
-# Tmux Configuration with Zsh Goodness
+# Tmux Configuration with Zsh Goodness (colson-tmux npm)
 
 Unlock the full potential of your terminal with this meticulously crafted tmux configuration, accompanied by a versatile Zsh script for effortlessly launching websites and applications. 🔥
+
+## Installation through NPM
+
+Ensure **Tmux** is installed on your machine!
+**`Tmux leader key`**: `<ctrl>+<space>`
+
+```shell
+$ npx colson-tmux
+$ cd ~/.config/tmux
+$ nvim .
+```
+
+Navigate to `tmux.conf`  
+Execute this command in normal mode!
+
+```
+<leader>+shit+i
+```
+
+Restart **terminal** to load **Tmux**!
+
+#### If you've already installed this before then for the latest pull, do:
+
+```
+$ npx colson-tmux@latest
+```
+
+#### `NOTE`: Read the documentation below for indepth wisdom on proper installation and uses!
 
 ## Table of Contents
 
