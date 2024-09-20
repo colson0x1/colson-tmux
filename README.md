@@ -22,6 +22,11 @@ Execute this command in normal mode!
 
 Restart **terminal** to load **Tmux**!
 
+```
+$ zshrl
+$ tmuxrl
+```
+
 #### If you've already installed this before then for the latest pull, do:
 
 ```
