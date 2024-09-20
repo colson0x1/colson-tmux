@@ -103,7 +103,7 @@ Before diving in, ensure you have the following prerequisites:
 2. Clone this repository into your home directory:
 
    ```shell
-   git clone https://github.com/colson0x1/tmux ~/.config/tmux
+   git clone https://github.com/colson0x1/colson-tmux ~/.config/tmux
    ```
 
 3. Reload your tmux environment to apply the configuration:
