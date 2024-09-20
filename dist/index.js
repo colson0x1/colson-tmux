@@ -3,7 +3,7 @@ import { installTmuxConfig } from './installTmuxConfig.js';
 const greetUser = () => {
     const greeting = `
   \x1b[1;34m@ Introducing \x1b[38;5;32mCOLSON TMUX 💎\x1b[0m
-  \x1b[1;35mOptimized Tmux Configuration for Software Engineers 🚀\x1b[0m
+  \x1b[1;35mOptimized Tmux + ZSH Configuration for Software Engineers 🚀\x1b[0m
   \x1b[38;5;214mAuthor: Colson\x1b[0m
 
   \x1b[1;37mVisit the official repository for more information:
