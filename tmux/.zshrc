@@ -207,6 +207,8 @@ if [ -f '/home/colson/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/cols
 
 # NVIM 
 alias nv="nvim ."
+# NVIM in Sudo mode
+alias nvv="sudo nvim ."
 # Clear terminal
 alias cl="clear"
 
