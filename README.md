@@ -265,6 +265,21 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `gasm`              | Stage all changes, including submodules        |
 | `gri`               | Interactive rebase                             |
 
+Add `vimdiff` as default for diff!
+
+```
+$ git config --global diff.tool vimdiff
+$ git config --global difftool.prompt false
+```
+
+Now, `gds` works :)
+
+\+ Also make **Git** use `main` as the default branch as opposed to classic `master` convention!
+
+```
+$ git config --global init.defaultBranch main
+```
+
 ### **Docker Aliases**
 
 | Alias/Command     | Description                                         |
