@@ -24,6 +24,7 @@ targets=(
  "nr New Repo:https://github.com/new"
  "Chat GPT:https://chat.openai.com"
  "Stack Overflow:https://stackoverflow.com"
+ "Syrosin Inc.: https://syrosin.com"
  "tm TYPEMUSE:https://typemuse.com"
  "yt YouTube:https://youtube.com"
  "Aniwatch:https://hianime.to"
