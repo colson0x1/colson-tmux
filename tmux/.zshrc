@@ -73,7 +73,8 @@ alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname
 # Diff of changes in the working directory
 alias gd="git diff"
 # Side-by-side diff
-alias gds="git diff --side-by-side"
+# alias gds="git diff --side-by-side"
+alias gds="git difftool --tool=vimdiff"
 # Colored and word-diff of changes
 alias gwd="git diff --color-words"
 # Quickly stage all changes
