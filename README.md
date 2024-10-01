@@ -209,6 +209,9 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `ts [session_name]` | Start a new tmux session                        |
 | `ta [session_name]` | Attach to an existing tmux session              |
 | `tk [session_name]` | Kill a tmux session                             |
+| `nv`                | Open Neovim in the current directory            |
+| `nvv`               | Open Neovim with sudo privileges                |
+| `cl`                | Clear the terminal screen                       |
 | `tnw`               | Create a new window in the current tmux session |
 | `tn`                | Switch to the next tmux window                  |
 | `tp`                | Switch to the previous tmux window              |
@@ -217,9 +220,6 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `tmuxrl`            | Reload the tmux configuration                   |
 | `zshrl`             | Reload the Zsh configuration                    |
 | `vim`               | Alias for opening Neovim                        |
-| `nv`                | Open Neovim in the current directory            |
-| `nvv`               | Open Neovim with sudo privileges                |
-| `cl`                | Clear the terminal screen                       |
 
 ### **Git Aliases**
 
