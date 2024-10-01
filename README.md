@@ -37,7 +37,10 @@ $ npx colson-tmux@latest
 
 ## Table of Contents
 
-- [Tmux Configuration with Zsh Goodness](#tmux-configuration-with-zsh-goodness)
+- [Tmux Configuration with Zsh Goodness (colson-tmux npm)](#tmux-configuration-with-zsh-goodness-colson-tmux-npm)
+  - [Installation through NPM](#installation-through-npm)
+    - [If you've already installed this before then for the latest pull, do:](#if-youve-already-installed-this-before-then-for-the-latest-pull-do)
+    - [`NOTE`: Read the documentation below for indepth wisdom on proper installation and uses!](#note-read-the-documentation-below-for-indepth-wisdom-on-proper-installation-and-uses)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Screenshots](#screenshots)
@@ -50,6 +53,13 @@ $ npx colson-tmux@latest
   - [Usage](#usage)
   - [Key Bindings](#key-bindings)
   - [Customization](#customization)
+  - [🔥 Alias/Command for Engineers](#-aliascommand-for-engineers)
+    - [**Zsh \& Tmux Configurations**](#zsh--tmux-configurations)
+    - [**Git Aliases**](#git-aliases)
+    - [**Docker Aliases**](#docker-aliases)
+    - [**Kubernetes Aliases**](#kubernetes-aliases)
+    - [**Development Tool Aliases**](#development-tool-aliases)
+    - [**Miscellaneous**](#miscellaneous)
 
 ## Features
 
@@ -184,5 +194,109 @@ Master these key bindings for efficient tmux navigation:
 ## Customization
 
 Tailor your tmux configuration and the list of websites and applications in `goto.sh` to match your preferences. Dive into the endless possibilities of customization and make your terminal truly yours. Additionally, explore the power of Zsh with a rich set of aliases and Git shortcuts in the included `.zshrc` file.
+
+---
+
+## 🔥 Alias/Command for Engineers
+
+This package also provides configurations and command aliases for `Tmux`, `Zsh`, `Git`, `Docker`, `Kubernetes`, and other development tools, aiming to improve software development productivity.
+
+### **Zsh & Tmux Configurations**
+
+| Alias/Command       | Description                                     |
+| ------------------- | ----------------------------------------------- |
+| `tl`                | List all tmux sessions                          |
+| `ts [session_name]` | Start a new tmux session                        |
+| `ta [session_name]` | Attach to an existing tmux session              |
+| `tk [session_name]` | Kill a tmux session                             |
+| `tnw`               | Create a new window in the current tmux session |
+| `tn`                | Switch to the next tmux window                  |
+| `tp`                | Switch to the previous tmux window              |
+| `ths`               | Split the tmux window horizontally              |
+| `tvs`               | Split the tmux window vertically                |
+| `tmuxrl`            | Reload the tmux configuration                   |
+| `zshrl`             | Reload the Zsh configuration                    |
+| `vim`               | Alias for opening Neovim                        |
+| `nv`                | Open Neovim in the current directory            |
+| `nvv`               | Open Neovim with sudo privileges                |
+| `cl`                | Clear the terminal screen                       |
+
+### **Git Aliases**
+
+| Alias/Command       | Description                                    |
+| ------------------- | ---------------------------------------------- |
+| `gst`               | Show the current git status                    |
+| `gd`                | Show the git diff                              |
+| `ga`                | Stage all changes                              |
+| `gc [message]`      | Commit changes with a message                  |
+| `gpm`               | Push changes to the `main` branch              |
+| `gpmf`              | Force push changes to the `main` branch        |
+| `gcan`              | Amend the last commit with same commit message |
+| `gcam [message]`    | Amend the last commit with new commit message  |
+| `gcb [branch_name]` | Create and checkout a new branch               |
+| `gco [branch_name]` | Switch to an existing branch                   |
+| `grh`               | Reset the current branch to the latest commit  |
+| `grh1`              | Reset the last branch to the latest commit     |
+| `gs`                | Abbreviated git status                         |
+| `gl`                | Show a readable git log                        |
+| `gg`                | Show a colorful and condensed git log          |
+| `gb`                | List branches sorted by most recent commit     |
+| `gds`               | Side-by-side git diff                          |
+| `gwd`               | Show a colorful word-diff                      |
+| `gp`                | Push the current branch                        |
+| `gpl`               | Pull the latest changes from the remote        |
+| `gf`                | Fetch changes from the remote                  |
+| `gunt`              | Show untracked files                           |
+| `gsmst`             | Check the status of all submodules             |
+| `gasm`              | Stage all changes, including submodules        |
+| `gri`               | Interactive rebase                             |
+
+### **Docker Aliases**
+
+| Alias/Command     | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| `d`               | Alias for Docker                                    |
+| `dps`             | List Docker containers                              |
+| `di`              | List Docker images                                  |
+| `db [tag]`        | Build a Docker image with a tag                     |
+| `dr [container]`  | Run a Docker container                              |
+| `dex [container]` | Execute a command inside a running Docker container |
+| `dst [container]` | Stop a running Docker container                     |
+| `drm [container]` | Remove a Docker container                           |
+| `drmi [image]`    | Remove a Docker image                               |
+
+### **Kubernetes Aliases**
+
+| Alias/Command     | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `k`               | Alias for kubectl                            |
+| `kgp`             | Get all Kubernetes pods                      |
+| `kgs`             | Get all Kubernetes services                  |
+| `kga`             | Get all Kubernetes resources                 |
+| `kd [resource]`   | Describe a Kubernetes resource               |
+| `kdel [resource]` | Delete a Kubernetes resource                 |
+| `kaf [file]`      | Apply a Kubernetes configuration from a file |
+| `kl [pod]`        | Show logs of a Kubernetes pod                |
+| `ke [pod]`        | Execute a command inside a Kubernetes pod    |
+| `kns [namespace]` | Switch Kubernetes namespace                  |
+
+### **Development Tool Aliases**
+
+| Alias/Command | Description                                   |
+| ------------- | --------------------------------------------- |
+| `cra`         | Create a new React app using Create React App |
+| `cva`         | Create a new VITE app                         |
+| `cna`         | Create a new Next.js app                      |
+| `bun`         | Run Bun package manager                       |
+
+### **Miscellaneous**
+
+| Alias/Command             | Description                     |
+| ------------------------- | ------------------------------- |
+| `gcloud`                  | Google Cloud SDK configuration  |
+| `eval "$(ng completion)"` | Load Angular CLI autocompletion |
+| `bindkey -v`              | Enable Vim key bindings in Zsh  |
+
+---
 
 Peace!
