@@ -53,7 +53,7 @@ $ npx colson-tmux@latest
   - [Usage](#usage)
   - [Key Bindings](#key-bindings)
   - [Customization](#customization)
-  - [🔥 Alias/Command for Engineers](#-aliascommand-for-engineers)
+  - [🔥 **Alias/Command for Engineers**](#-aliascommand-for-engineers)
     - [**Zsh \& Tmux Configurations**](#zsh--tmux-configurations)
     - [**Git Aliases**](#git-aliases)
     - [**Docker Aliases**](#docker-aliases)
@@ -197,7 +197,7 @@ Tailor your tmux configuration and the list of websites and applications in `got
 
 ---
 
-## 🔥 Alias/Command for Engineers
+## 🔥 **Alias/Command for Engineers**
 
 This package also provides configurations and command aliases for `Tmux`, `Zsh`, `Git`, `Docker`, `Kubernetes`, and other development tools, aiming to improve software development productivity.
 
