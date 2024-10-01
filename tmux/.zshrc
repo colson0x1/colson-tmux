@@ -54,6 +54,8 @@ alias tp="tmux select-window -p"
 alias ths="tmux split-window -h"chage bash to zsh
 # Split the tmux window vertically
 alias tvs="tmux split-window -v"
+# Rename tmux session
+alias tr="tmux rename-session -t"
 
 
 # /* @ GIT Aliases */
