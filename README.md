@@ -8,8 +8,7 @@ Ensure **Tmux** is installed on your machine!
 **`Tmux leader key`**: `<ctrl>+<space>`
 
 ```shell
-$ npx colson-tmux
-$ cd ~/.config/tmux
+$ npx colson-tmux $ cd ~/.config/tmux
 $ nvim .
 ```
 
@@ -54,7 +53,8 @@ $ npx colson-tmux@latest
   - [Key Bindings](#key-bindings)
   - [Customization](#customization)
   - [🔥 **Alias/Command for Engineers**](#-aliascommand-for-engineers)
-    - [**Zsh \& Tmux Configurations**](#zsh--tmux-configurations)
+    - [**Zsh \& Tmux Commands**](#zsh--tmux-commands)
+    - [**Tmux Specific Commands**](#tmux-specific-commands)
     - [**Git Aliases**](#git-aliases)
     - [**Docker Aliases**](#docker-aliases)
     - [**Kubernetes Aliases**](#kubernetes-aliases)
@@ -201,26 +201,35 @@ Tailor your tmux configuration and the list of websites and applications in `got
 
 This package also provides configurations and command aliases for `Tmux`, `Zsh`, `Git`, `Docker`, `Kubernetes`, and other development tools, aiming to improve software development productivity.
 
-### **Zsh & Tmux Configurations**
+### **Zsh & Tmux Commands**
 
-| Alias/Command                                  | Description                                     |
-| ---------------------------------------------- | ----------------------------------------------- |
-| `tl`                                           | List all tmux sessions                          |
-| `ts [session_name]`                            | Start a new tmux session                        |
-| `ta [session_name]`                            | Attach to an existing tmux session              |
-| `tk [session_name]`                            | Kill a tmux session                             |
-| `tr [current_session_name] [new_session_name]` | Rename existing tmux session                    |
-| `nv`                                           | Open Neovim in the current directory            |
-| `nvv`                                          | Open Neovim with sudo privileges                |
-| `cl`                                           | Clear the terminal screen                       |
-| `tnw`                                          | Create a new window in the current tmux session |
-| `tn`                                           | Switch to the next tmux window                  |
-| `tp`                                           | Switch to the previous tmux window              |
-| `ths`                                          | Split the tmux window horizontally              |
-| `tvs`                                          | Split the tmux window vertically                |
-| `tmuxrl`                                       | Reload the tmux configuration                   |
-| `zshrl`                                        | Reload the Zsh configuration                    |
-| `vim`                                          | Alias for opening Neovim                        |
+| Alias/Command                                  | Description                          |
+| ---------------------------------------------- | ------------------------------------ |
+| `tl`                                           | List all tmux sessions               |
+| `ts [session_name]`                            | Start a new tmux session             |
+| `ta [session_name]`                            | Attach to an existing tmux session   |
+| `tk [session_name]`                            | Kill a tmux session                  |
+| `tr [current_session_name] [new_session_name]` | Rename existing tmux session         |
+| `nv`                                           | Open Neovim in the current directory |
+| `nvv`                                          | Open Neovim with sudo privileges     |
+| `cl`                                           | Clear the terminal screen            |
+| `tmuxrl`                                       | Reload the tmux configuration        |
+| `zshrl`                                        | Reload the Zsh configuration         |
+| `vim`                                          | Alias for opening Neovim             |
+
+### **Tmux Specific Commands**
+
+| **Command/Binding**    | **Description**                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| `<leader> + -`         | Split the current pane horizontally                                             |
+| `<leader> + \|`        | Split the current pane vertically                                               |
+| `Shift+Alt+J`          | Move to the next window                                                         |
+| `Shift+Alt+K`          | Move to the previous window                                                     |
+| `<leader> + shift + S` | Save tmux sessions (tmux-resurrect) even after machine restarts                 |
+| `<leader> + shift + R` | Restore the last saved tmux session (tmux-resurrect) even after restarting      |
+| `<leader> + o`         | Trigger the custom `goto.sh` script for opening websites and apps from terminal |
+| `<Ctrl> + d`           | Close current window                                                            |
+| `<leader> + d`         | Exit Tmux sesion                                                                |
 
 ### **Git Aliases**
 
@@ -232,6 +241,9 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `gc [message]`      | Commit changes with a message                  |
 | `gpm`               | Push changes to the `main` branch              |
 | `gpmf`              | Force push changes to the `main` branch        |
+| `gl`                | Show a readable git log                        |
+| `gg`                | Show a colorful and condensed git log          |
+| `gunt`              | Show untracked files                           |
 | `gcan`              | Amend the last commit with same commit message |
 | `gcam [message]`    | Amend the last commit with new commit message  |
 | `gcb [branch_name]` | Create and checkout a new branch               |
@@ -239,15 +251,12 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `grh`               | Reset the current branch to the latest commit  |
 | `grh1`              | Reset the last branch to the latest commit     |
 | `gs`                | Abbreviated git status                         |
-| `gl`                | Show a readable git log                        |
-| `gg`                | Show a colorful and condensed git log          |
 | `gb`                | List branches sorted by most recent commit     |
 | `gds`               | Side-by-side git diff                          |
 | `gwd`               | Show a colorful word-diff                      |
 | `gp`                | Push the current branch                        |
 | `gpl`               | Pull the latest changes from the remote        |
 | `gf`                | Fetch changes from the remote                  |
-| `gunt`              | Show untracked files                           |
 | `gsmst`             | Check the status of all submodules             |
 | `gasm`              | Stage all changes, including submodules        |
 | `gri`               | Interactive rebase                             |
