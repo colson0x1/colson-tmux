@@ -225,6 +225,10 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `<leader> + \|`        | Split the current pane vertically                                               |
 | `Shift+Alt+J`          | Move to the next window                                                         |
 | `Shift+Alt+K`          | Move to the previous window                                                     |
+| `<leader> + r`         | Rename current window                                                           |
+| `<leader> + n`         | Switch to next window                                                           |
+| `<leader> + p`         | Switch to previous window                                                       |
+| `<leader> + s`         | Switch sessions                                                                 |
 | `<leader> + shift + S` | Save tmux sessions (tmux-resurrect) even after machine restarts                 |
 | `<leader> + shift + R` | Restore the last saved tmux session (tmux-resurrect) even after restarting      |
 | `<leader> + o`         | Trigger the custom `goto.sh` script for opening websites and apps from terminal |
