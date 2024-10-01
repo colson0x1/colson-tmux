@@ -203,23 +203,24 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 
 ### **Zsh & Tmux Configurations**
 
-| Alias/Command       | Description                                     |
-| ------------------- | ----------------------------------------------- |
-| `tl`                | List all tmux sessions                          |
-| `ts [session_name]` | Start a new tmux session                        |
-| `ta [session_name]` | Attach to an existing tmux session              |
-| `tk [session_name]` | Kill a tmux session                             |
-| `nv`                | Open Neovim in the current directory            |
-| `nvv`               | Open Neovim with sudo privileges                |
-| `cl`                | Clear the terminal screen                       |
-| `tnw`               | Create a new window in the current tmux session |
-| `tn`                | Switch to the next tmux window                  |
-| `tp`                | Switch to the previous tmux window              |
-| `ths`               | Split the tmux window horizontally              |
-| `tvs`               | Split the tmux window vertically                |
-| `tmuxrl`            | Reload the tmux configuration                   |
-| `zshrl`             | Reload the Zsh configuration                    |
-| `vim`               | Alias for opening Neovim                        |
+| Alias/Command                                  | Description                                     |
+| ---------------------------------------------- | ----------------------------------------------- |
+| `tl`                                           | List all tmux sessions                          |
+| `ts [session_name]`                            | Start a new tmux session                        |
+| `ta [session_name]`                            | Attach to an existing tmux session              |
+| `tk [session_name]`                            | Kill a tmux session                             |
+| `tr [current_session_name] [new_session_name]` | Rename existing tmux session                    |
+| `nv`                                           | Open Neovim in the current directory            |
+| `nvv`                                          | Open Neovim with sudo privileges                |
+| `cl`                                           | Clear the terminal screen                       |
+| `tnw`                                          | Create a new window in the current tmux session |
+| `tn`                                           | Switch to the next tmux window                  |
+| `tp`                                           | Switch to the previous tmux window              |
+| `ths`                                          | Split the tmux window horizontally              |
+| `tvs`                                          | Split the tmux window vertically                |
+| `tmuxrl`                                       | Reload the tmux configuration                   |
+| `zshrl`                                        | Reload the Zsh configuration                    |
+| `vim`                                          | Alias for opening Neovim                        |
 
 ### **Git Aliases**
 
