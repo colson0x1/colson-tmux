@@ -5,7 +5,7 @@ Unlock the full potential of your terminal with this meticulously crafted tmux c
 ## Installation through NPM
 
 Ensure **Tmux** is installed on your machine!  
-**`Tmux leader key`**: `<ctrl>+<space>`
+`Tmux leader key`-> **`Ctrl + Space`**
 
 ```shell
 $ npx colson-tmux $ cd ~/.config/tmux
@@ -16,7 +16,7 @@ Navigate to `tmux.conf`
 Execute this command in normal mode!
 
 ```
-<leader>+shit+i
+<leader> + shit + i
 ```
 
 Restart **terminal** to load **Tmux**!
@@ -50,7 +50,6 @@ $ npx colson-tmux@latest
     - [Installation](#installation)
     - [Install Tmux Plugins](#install-tmux-plugins)
   - [Usage](#usage)
-  - [Key Bindings](#key-bindings)
   - [Customization](#customization)
   - [🔥 **Alias/Command for Engineers**](#-aliascommand-for-engineers)
     - [**Zsh \& Tmux Commands**](#zsh--tmux-commands)
@@ -175,21 +174,17 @@ Before diving in, ensure you have the following prerequisites:
 
 ## Usage
 
-- Press `ctrl+space` to activate the leader key.
-- Switch between windows with `M-K` and `M-J`.
-- Split the terminal horizontally (`leader + -`) and vertically (`leader + |`).
-- Launch websites and apps with `leader + o`.
-- Customize website and app choices in `goto.sh`.
-
-## Key Bindings
-
-Master these key bindings for efficient tmux navigation:
-
 - **Leader Key**: `ctrl+space`
 - **Window Switching**: `Shift+Alt+j` and `Shift+Alt+k`
 - **Horizontal Split**: `leader + -`
 - **Vertical Split**: `leader + |`
 - **Launch Websites and Apps**: `leader + o`
+
+`NOTE`: Make sure `fzf` is installed on your machine for **`<leader> + o`** to work!!
+
+```shell
+$ sudo pacman -S fzf
+```
 
 ## Customization
 
