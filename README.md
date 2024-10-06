@@ -8,7 +8,8 @@ Ensure **Tmux** is installed on your machine!
 `Tmux leader key`-> **`Ctrl + Space`**
 
 ```shell
-$ npx colson-tmux $ cd ~/.config/tmux
+$ npx colson-tmux
+$ cd ~/.config/tmux
 $ nvim .
 ```
 
@@ -232,33 +233,35 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 
 ### **Git Aliases**
 
-| Alias/Command       | Description                                    |
-| ------------------- | ---------------------------------------------- |
-| `gst`               | Show the current git status                    |
-| `gd`                | Show the git diff                              |
-| `ga`                | Stage all changes                              |
-| `gc [message]`      | Commit changes with a message                  |
-| `gpm`               | Push changes to the `main` branch              |
-| `gpmf`              | Force push changes to the `main` branch        |
-| `gl`                | Show a readable git log                        |
-| `gg`                | Show a colorful and condensed git log          |
-| `gunt`              | Show untracked files                           |
-| `gcan`              | Amend the last commit with same commit message |
-| `gcam [message]`    | Amend the last commit with new commit message  |
-| `gcb [branch_name]` | Create and checkout a new branch               |
-| `gco [branch_name]` | Switch to an existing branch                   |
-| `grh`               | Reset the current branch to the latest commit  |
-| `grh1`              | Reset the last branch to the latest commit     |
-| `gs`                | Abbreviated git status                         |
-| `gb`                | List branches sorted by most recent commit     |
-| `gds`               | Side-by-side git diff                          |
-| `gwd`               | Show a colorful word-diff                      |
-| `gp`                | Push the current branch                        |
-| `gpl`               | Pull the latest changes from the remote        |
-| `gf`                | Fetch changes from the remote                  |
-| `gsmst`             | Check the status of all submodules             |
-| `gasm`              | Stage all changes, including submodules        |
-| `gri`               | Interactive rebase                             |
+| Alias/Command                   | Description                                    |
+| ------------------------------- | ---------------------------------------------- |
+| `gst`                           | Show the current git status                    |
+| `gd`                            | Show the git diff                              |
+| `ga`                            | Stage all changes                              |
+| `gaf [file1] [file2] ..`        | Stage specific files                           |
+| `gc [message]`                  | Commit changes with a message                  |
+| `gpm`                           | Push changes to the `main` branch              |
+| `gpmf`                          | Force push changes to the `main` branch        |
+| `gl`                            | Show a readable git log                        |
+| `gg`                            | Show a colorful and condensed git log          |
+| `gunt`                          | Show untracked files                           |
+| `gcan`                          | Amend the last commit with same commit message |
+| `gcam [message]`                | Amend the last commit with new commit message  |
+| `gcb [branch_name]`             | Create and checkout a new branch               |
+| `gco [branch_name]`             | Switch to an existing branch                   |
+| `grh`                           | Reset the current branch to the latest commit  |
+| `grh1`                          | Reset the last branch to the latest commit     |
+| `gs`                            | Abbreviated git status                         |
+| `gb`                            | List branches sorted by most recent commit     |
+| `gd [fileName or path to file]` | Show the git diff for a specific file          |
+| `gds`                           | Side-by-side git diff                          |
+| `gwd`                           | Show a colorful word-diff                      |
+| `gp`                            | Push the current branch                        |
+| `gpl`                           | Pull the latest changes from the remote        |
+| `gf`                            | Fetch changes from the remote                  |
+| `gsmst`                         | Check the status of all submodules             |
+| `gasm`                          | Stage all changes, including submodules        |
+| `gri`                           | Interactive rebase                             |
 
 Add `vimdiff` as default for diff!
 
