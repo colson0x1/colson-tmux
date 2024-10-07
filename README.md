@@ -261,7 +261,7 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `gf`                            | Fetch changes from the remote                  |
 | `gsmst`                         | Check the status of all submodules             |
 | `gasm`                          | Stage all changes, including submodules        |
-| `gri`                           | Interactive rebase                             |
+| `gri <branch-name>`             | Interactive rebase                             |
 
 Add `vimdiff` as default for diff!
 
