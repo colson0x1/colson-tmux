@@ -60,6 +60,7 @@ $ npx colson-tmux@latest
     - [**Kubernetes Aliases**](#kubernetes-aliases)
     - [**Development Tool Aliases**](#development-tool-aliases)
     - [**Miscellaneous**](#miscellaneous)
+  - [Concurrent Services Execution with one go!](#concurrent-services-execution-with-one-go)
 
 ## Features
 
@@ -325,5 +326,39 @@ $ git config --global init.defaultBranch main
 | `bindkey -v`              | Enable Vim key bindings in Zsh  |
 
 ---
+
+## Concurrent Services Execution with one go!
+
+```shell
+cd ~
+mkdir -p ~/bin
+cp start_services.sh ~/bin/start_services
+zshrl
+```
+
+Refactor commands in the `services_start_command.txt` file which is located at `~/.config/tmux`!
+
+Make `start_services.sh` executable!
+
+```shell
+cd ~/.config/tmux
+chmod +x start_services.sh
+```
+
+**Uses:**
+
+Here, `<session-name>` is the name of the `Tmux` session that will be created (or attached to, if it already exists).
+And `services-start-commands.txt` is the text file that contains the list of commands to run in separate windows inside the `Tmux` session!
+
+```shell
+ss <session-name> ~/.config/tmux/services-start-commands.txt
+
+```
+
+**Example:**
+
+```shell
+ss TYPEMUSE ~/.config/tmux/services-start-commands.txt
+```
 
 Peace!
