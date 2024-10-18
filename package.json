@@ -1,6 +1,6 @@
 {
   "name": "colson-tmux",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Colson Tmux: Tmux + ZSH for Software Engineers!",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
