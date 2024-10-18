@@ -1,5 +1,7 @@
 # @ COLSON ZSH configurations for packages/softwares
 
+export PATH="$HOME/bin:$PATH"
+
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(git)
@@ -219,3 +221,5 @@ alias cl="clear"
 if [ -z "$TMUX" ] && [ -z "$TMUX_SESSION" ]; then
   tmux attach-session -t default || tmux new-session -s default
 fi
+
+alias ss="start-services"

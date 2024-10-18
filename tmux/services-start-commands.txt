@@ -1,0 +1,19 @@
+cd ~/prod/TYPEMUSE/typemuse-web && pnpm dev
+cd ~/prod/TYPEMUSE/typemuse-web && pnpm web:dev:tunnel
+cd ~/prod/TYPEMUSE/auth-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/game-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/leaderboard-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/messaging-service && go run .
+cd ~/prod/TYPEMUSE/payment-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/transaction-service && go run .
+cd ~/prod/TYPEMUSE/social-network-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/react-native-app && pnpm start:dev
+cd ~/prod/TYPEMUSE/electron-desktop-app && pnpm start:dev
+cd ~/prod/TYPEMUSE/admin-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/dashboard-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/notification-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/multiplayer-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/account-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/order-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/subscription-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/event-bus-service && pnpm start:dev
