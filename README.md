@@ -207,6 +207,7 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `ta [session_name]`                            | Attach to an existing tmux session   |
 | `tk [session_name]`                            | Kill a tmux session                  |
 | `tr [current_session_name] [new_session_name]` | Rename existing tmux session         |
+| `tc [session_name]`                            | Switch between sessions              |
 | `nv`                                           | Open Neovim in the current directory |
 | `nvv`                                          | Open Neovim with sudo privileges     |
 | `cl`                                           | Clear the terminal screen            |

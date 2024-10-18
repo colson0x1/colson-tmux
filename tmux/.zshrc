@@ -223,3 +223,5 @@ if [ -z "$TMUX" ] && [ -z "$TMUX_SESSION" ]; then
 fi
 
 alias ss="start-services"
+
+alias tc="tmux switch-client -t"
