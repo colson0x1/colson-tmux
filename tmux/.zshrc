@@ -223,8 +223,29 @@ if [ -z "$TMUX" ] && [ -z "$TMUX_SESSION" ]; then
 fi
 
 # services start
-alias ss="~/.config/tmux/start-services.sh"
+function ss() {
+    session_name="$1"
+    command_file="$2"
+
+    # Check if the second argument is 'ssc' and resolve the alias
+    if [[ "$command_file" == "ssc" ]]; then
+        command_file=~/.config/tmux/services-start-commands.txt
+    fi
+
+    echo "Session Name: $session_name"
+    echo "Command File: $command_file"
+
+    # Check if the command file exists
+    if [[ ! -f "$command_file" ]]; then
+        echo "Command file not found: $command_file"
+        return 1
+    fi
+
+    # Execute the start-services.sh script with the session name and command file
+    ~/.config/tmux/start-services.sh "$session_name" "$command_file"
+}
+
 # services start commands
-alias ssc="~/.config/tmux/services-start-commands.txt"
+# alias ssc="~/.config/tmux/services-start-commands.txt"
 
 alias tc="tmux switch-client -t"

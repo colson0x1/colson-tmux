@@ -61,6 +61,9 @@ $ npx colson-tmux@latest
     - [**Development Tool Aliases**](#development-tool-aliases)
     - [**Miscellaneous**](#miscellaneous)
   - [Concurrent Services Execution with one go!](#concurrent-services-execution-with-one-go)
+    - [**Manual Execution!**](#manual-execution)
+    - [**Command File Example**](#command-file-example)
+    - [**Concurrency in Action!!**](#concurrency-in-action)
 
 ## Features
 
@@ -335,14 +338,14 @@ cd ~
 mkdir -p ~/bin
 ```
 
-Refactor commands in the `services_start_command.txt` file which is located at `~/.config/tmux`!
+Refactor commands in the `services-start-command.txt` file which is located at `~/.config/tmux`!
 
-Make `start_services.sh` executable!
+Make `start-services.sh` executable!
 
 ```shell
 cd ~/.config/tmux
-chmod +x start_services.sh
-cp start_services.sh ~/bin/start_services
+chmod +x start-services.sh
+cp start-services.sh ~/bin/start-services
 zshrl
 
 ```
@@ -357,19 +360,67 @@ ss <session-name> <services-start-commands-file>
 
 ```
 
-**services start**
+**services start ->**
 `ss="~/.config/tmux/start-services.sh"`
 
-**services start commands**
+**services start commands ->**
 `ssc="~/.config/tmux/services-start-commands.txt"`
 
-**Example:**
+### **Manual Execution!**
 
 ```shell
-ss TYPEMUSE ~/.config/tmux/services-start-commands.txt
+cd ~/.config/tmux
+chmod +x start-services.sh
+zshrl
+# Restart the Terminal
+cd ~/.config/tmux
+./start-services.sh <session-name> <command-file-txt-path>
+# Example
+./start-services.sh TYPEMUSE ~/.config/tmux/services-start-commands.txt
 ```
 
-OR
+### **Command File Example**
+
+**`services-start-command.txt`**
+
+```shell
+cd ~/prod/TYPEMUSE/typemuse-web && pnpm dev
+cd ~/prod/TYPEMUSE/typemuse-web && pnpm web:dev:tunnel
+cd ~/prod/TYPEMUSE/auth-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/game-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/leaderboard-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/messaging-service && go run .
+cd ~/prod/TYPEMUSE/payment-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/transaction-service && go run .
+cd ~/prod/TYPEMUSE/social-network-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/react-native-app && pnpm start:dev
+cd ~/prod/TYPEMUSE/electron-desktop-app && pnpm start:dev
+cd ~/prod/TYPEMUSE/admin-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/dashboard-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/notification-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/multiplayer-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/account-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/order-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/subscription-service && pnpm start:dev
+cd ~/prod/TYPEMUSE/event-bus-service && pnpm start:dev
+```
+
+### **Concurrency in Action!!**
+
+`NOTE`: Make sure you have done this first!
+
+```shell
+cd ~/.config/tmux
+chmod +x start-services.sh
+```
+
+Now restart the terminal and use the pattern below!
+
+```shell
+ss <session-name> ssc
+```
+
+**EXAMPLE:**
 
 ```shell
 ss TYPEMUSE ssc
