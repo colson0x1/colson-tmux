@@ -222,6 +222,9 @@ if [ -z "$TMUX" ] && [ -z "$TMUX_SESSION" ]; then
   tmux attach-session -t default || tmux new-session -s default
 fi
 
-alias ss="start-services"
+# services start
+alias ss="~/.config/tmux/start-services.sh"
+# services start commands
+alias ssc="~/.config/tmux/services-start-commands.txt"
 
 alias tc="tmux switch-client -t"

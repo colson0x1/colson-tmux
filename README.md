@@ -333,8 +333,6 @@ $ git config --global init.defaultBranch main
 ```shell
 cd ~
 mkdir -p ~/bin
-cp start_services.sh ~/bin/start_services
-zshrl
 ```
 
 Refactor commands in the `services_start_command.txt` file which is located at `~/.config/tmux`!
@@ -344,6 +342,9 @@ Make `start_services.sh` executable!
 ```shell
 cd ~/.config/tmux
 chmod +x start_services.sh
+cp start_services.sh ~/bin/start_services
+zshrl
+
 ```
 
 **Uses:**
@@ -352,14 +353,26 @@ Here, `<session-name>` is the name of the `Tmux` session that will be created (o
 And `services-start-commands.txt` is the text file that contains the list of commands to run in separate windows inside the `Tmux` session!
 
 ```shell
-ss <session-name> ~/.config/tmux/services-start-commands.txt
+ss <session-name> <services-start-commands-file>
 
 ```
+
+**services start**
+`ss="~/.config/tmux/start-services.sh"`
+
+**services start commands**
+`ssc="~/.config/tmux/services-start-commands.txt"`
 
 **Example:**
 
 ```shell
 ss TYPEMUSE ~/.config/tmux/services-start-commands.txt
+```
+
+OR
+
+```shell
+ss TYPEMUSE ssc
 ```
 
 Peace!
