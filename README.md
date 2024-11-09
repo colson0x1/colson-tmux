@@ -266,6 +266,7 @@ This package also provides configurations and command aliases for `Tmux`, `Zsh`,
 | `gf`                            | Fetch changes from the remote                  |
 | `gsmst`                         | Check the status of all submodules             |
 | `gasm`                          | Stage all changes, including submodules        |
+| `gr <branch-name>`              | Git rebase                                     |
 | `gri <branch-name>`             | Interactive rebase                             |
 
 Add `vimdiff` as default for diff!
@@ -415,6 +416,10 @@ chmod +x start-services.sh
 ```
 
 Now restart the terminal and use the pattern below!
+
+**`ss`** -> Start Services
+
+**`ssc`** -> Start Services Commands
 
 ```shell
 ss <session-name> ssc
