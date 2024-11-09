@@ -109,6 +109,8 @@ alias gbd="git branch -d"
 alias gbrd="git push origin --delete"
 # Rename a branch
 alias gmv="git branch -m"
+# Git rebase
+alias gr="git rebase"
 # Interactive rebase
 alias gri="git rebase -i"
 # Alias for branch checkout
