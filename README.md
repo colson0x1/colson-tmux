@@ -2,6 +2,8 @@
 
 Unlock the full potential of your terminal with this meticulously crafted tmux configuration, accompanied by a versatile Zsh script for effortlessly launching websites and applications. 🔥
 
+![colson tmux npm](https://i.imgur.com/3PiJBBO.png)
+
 ## Installation through NPM
 
 Ensure **Tmux** is installed on your machine!  
@@ -10,6 +12,7 @@ Ensure **Tmux** is installed on your machine!
 ```shell
 $ npx colson-tmux
 $ cd ~/.config/tmux
+$ tmux
 $ nvim .
 ```
 
@@ -44,6 +47,7 @@ $ npx colson-tmux@latest
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Screenshots](#screenshots)
+    - [💎 NEW LOOK (Colson TMUX, December 5th, 2024)](#-new-look-colson-tmux-december-5th-2024)
     - [✨ New Look (Colson TMUX)](#-new-look-colson-tmux)
     - [💎 Old Look (Colson TMUX)](#-old-look-colson-tmux)
   - [Prerequisites](#prerequisites)
@@ -73,6 +77,16 @@ $ npx colson-tmux@latest
 4. **Catppuccin Theme**: Elevate aesthetics with the visually pleasing Catppuccin theme.
 
 ## Screenshots
+
+### 💎 NEW LOOK (Colson TMUX, December 5th, 2024)
+
+![colson tmux npm](https://i.imgur.com/3PiJBBO.png)
+
+![colson tmux npm](https://i.imgur.com/IUGEkgN.png)
+
+![colson tmux npm](https://i.imgur.com/RcETNS3.png)
+
+![colson tmux npm](https://i.imgur.com/2GtP3Cr.png)
 
 ### ✨ New Look (Colson TMUX)
 
