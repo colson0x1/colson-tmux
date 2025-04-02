@@ -86,8 +86,9 @@ $ npx colson-tmux@latest
   - [🧬 Multi Branch Rebaser @ TYPEMUSE](#-multi-branch-rebaser--typemuse)
     - [**@ Approach 1**](#-approach-1)
     - [**🔥 @ Approach 2**](#--approach-2)
-      - [All \* Branches](#all--branches)
-      - [Specifying Branches](#specifying-branches)
+- [Rebase specific branches](#rebase-specific-branches)
+- [Rebase all branches (with interactive selection)](#rebase-all-branches-with-interactive-selection)
+- [Rebase specific branches](#rebase-specific-branches-1)
 
 ## Features
 
@@ -721,30 +722,30 @@ $ git rebase-all feature/payment-ui feature/payment-backend feature/analytics
 
 ### **🔥 @ Approach 2**
 
-1. First make the `rebase-typemuse.sh` script executable:
+<!-- 1. First make the `rebase-typemuse.sh` script executable: -->
+<!---->
+<!-- ```shell -->
+<!-- $ cd ~/.config/tmux -->
+<!-- $ sudo chmod +x typemuse-branch-reconciliation-engine.sh -->
+<!-- ``` -->
 
-```shell
-$ cd ~/.config/tmux
-$ sudo chmod +x rebase-typemuse.sh
-```
-
-2. Then, run the script:
+**Run** the script:
 
 #### All \* Branches
 
 ```
-tmrebase
+$ tmrebase
 or
-tmr
+$ tmr
 ```
 
 #### Specifying Branches
 
 ```
 # Rebase specific branches
-tmrebase feature/payment-ui feature/user-auth feature/analytics
+$ tmrebase feature/payment-ui feature/user-auth feature/analytics
 or
-tmr feature/login feature/dashboard
+$ tmr feature/login feature/dashboard
 ```
 
 OR run manually:
