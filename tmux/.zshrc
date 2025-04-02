@@ -1,5 +1,9 @@
 # @ COLSON ZSH configurations for packages/softwares
 
+# Set Neovim as the default editor
+export EDITOR=nvim
+export VISUAL=nvim
+
 export PATH="$HOME/bin:$PATH"
 
 export ZSH="$HOME/.oh-my-zsh"
