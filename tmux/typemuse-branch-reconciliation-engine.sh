@@ -1,25 +1,38 @@
 #!/bin/bash
 
-# TYPEMUSE - Multi-branch rebaser
+# TYPEMUSE GitOps Orchestration Engine
 # Engineer: COLSON
 
-# Terminal colors
+# @ Terminal colors
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-# Print banner
+# @ Detect GitHub username
+GITHUB_USERNAME=$(git config user.name 2>/dev/null || echo $(whoami))
+GIT_EMAIL=$(git config user.email 2>/dev/null || echo "")
+SYSTEM_USER=$(whoami)
+
+# @ Log
 echo -e "${BLUE}╔════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║         TYPEMUSE MULTI-BRANCH REBASER          ║${NC}"
+echo -e "${BLUE}║       TYPEMUSE GITOPS ORCHESTRATION ENGINE     ║${NC}"
 echo -e "${BLUE}╚════════════════════════════════════════════════╝${NC}"
+echo -e "${YELLOW}Operator: ${GITHUB_USERNAME} (@${SYSTEM_USER})${NC}"
+echo -e "${YELLOW}Timestamp: $(date '+%Y-%m-%d %H:%M:%S') UTC${NC}"
 
-# Get current branch
+# @ If git email is available, show it
+if [ ! -z "$GIT_EMAIL" ]; then
+    echo -e "${YELLOW}Git Email: ${GIT_EMAIL}${NC}"
+fi
+
+# @ Get current branch
 current_branch=$(git rev-parse --abbrev-ref HEAD)
-echo -e "${YELLOW}Current branch: ${current_branch}${NC}"
+echo -e "${CYAN}Current branch: ${current_branch}${NC}"
 
-# Update main branch
+# @ Update main branch
 echo -e "\n${BLUE}[1/3]${NC} Updating main branch..."
 git checkout main && git pull
 if [ $? -ne 0 ]; then
@@ -29,7 +42,7 @@ if [ $? -ne 0 ]; then
 fi
 echo -e "${GREEN}Main branch updated successfully.${NC}"
 
-# Determine which branches to rebase
+# @ Determine which branches to rebase
 if [ $# -eq 0 ]; then
     echo -e "\n${BLUE}[2/3]${NC} No branches specified. Finding feature branches..."
     # Find all branches except main
@@ -45,7 +58,7 @@ if [ $# -eq 0 ]; then
         ((i++))
     done
     
-    echo -e "${YELLOW}Enter branch numbers to rebase (space-separated), or 'all' for all branches:${NC}"
+    echo -e "${YELLOW}Enter branch numbers to reconcile (space-separated), or 'all' for all branches:${NC}"
     read -r selection
     
     if [[ "$selection" == "all" ]]; then
@@ -69,8 +82,8 @@ if [ ${#final_branches[@]} -eq 0 ]; then
     exit 1
 fi
 
-# Rebase each branch
-echo -e "\n${BLUE}[3/3]${NC} Rebasing selected branches on main..."
+# @ Rebase each branch
+echo -e "\n${BLUE}[3/3]${NC} Reconciling selected branches with main..."
 success_branches=()
 failed_branches=()
 
@@ -78,10 +91,10 @@ for branch in "${final_branches[@]}"; do
     echo -e "\n${YELLOW}Processing: ${branch}${NC}"
     if git checkout "$branch"; then
         if git rebase main; then
-            echo -e "${GREEN}✅ Successfully rebased $branch on main${NC}"
+            echo -e "${GREEN}✅ Successfully reconciled $branch with main${NC}"
             success_branches+=("$branch")
         else
-            echo -e "${RED}❌ Failed to rebase $branch on main. Aborting this branch's rebase.${NC}"
+            echo -e "${RED}❌ Failed to reconcile $branch. Aborting this branch's integration.${NC}"
             git rebase --abort
             failed_branches+=("$branch")
         fi
@@ -91,24 +104,24 @@ for branch in "${final_branches[@]}"; do
     fi
 done
 
-# Generate summary
-echo -e "\n${BLUE}══════════════ SUMMARY ══════════════${NC}"
-echo -e "${GREEN}Successfully rebased (${#success_branches[@]}):${NC}"
+# @ Generate summary
+echo -e "\n${BLUE}══════════════ INTEGRATION SUMMARY ══════════════${NC}"
+echo -e "${GREEN}Successfully reconciled (${#success_branches[@]}):${NC}"
 for branch in "${success_branches[@]}"; do
     echo -e "${GREEN}  ✓ $branch${NC}"
 done
 
 if [ ${#failed_branches[@]} -gt 0 ]; then
-    echo -e "\n${RED}Failed to rebase (${#failed_branches[@]}):${NC}"
+    echo -e "\n${RED}Failed to reconcile (${#failed_branches[@]}):${NC}"
     for branch in "${failed_branches[@]}"; do
         echo -e "${RED}  ✗ $branch${NC}"
     done
 fi
 
-# Return to original branch
+# @ Return to original branch
 echo -e "\n${BLUE}Returning to original branch: $current_branch${NC}"
 git checkout $current_branch
 
 echo -e "\n${BLUE}╔════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║              OPERATION COMPLETED               ║${NC}"
+echo -e "${BLUE}║         ORCHESTRATION CYCLE COMPLETED          ║${NC}"
 echo -e "${BLUE}╚════════════════════════════════════════════════╝${NC}"

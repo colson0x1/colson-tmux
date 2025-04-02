@@ -255,3 +255,51 @@ function ss() {
 # alias ssc="~/.config/tmux/services-start-commands.txt"
 
 alias tc="tmux switch-client -t"
+
+# TYPEMUSE - Enterprise Branch Integration System
+# Added: 2025-04-02
+# Author: colson0x1
+
+# Path to your rebase script
+TYPEMUSE_REBASE_SCRIPT="$HOME/.config/tmux/typemuse-branch-reconciliation-engine.sh"
+
+# ZSH function for TYPEMUSE GitOps
+function tmrebase() {
+  # Check if script exists
+  if [[ ! -f "$TYPEMUSE_REBASE_SCRIPT" ]]; then
+    echo "\033[0;31mError: Integration script not found at $TYPEMUSE_REBASE_SCRIPT\033[0m"
+    echo "\033[0;33mPlease update the path in your .zshrc file\033[0m"
+    return 1
+  fi
+  
+  # Check if script is executable
+  if [[ ! -x "$TYPEMUSE_REBASE_SCRIPT" ]]; then
+    echo "\033[0;33mMaking integration script executable...\033[0m"
+    chmod +x "$TYPEMUSE_REBASE_SCRIPT"
+  fi
+  
+  # Display enterprise-style header
+  # echo "\033[0;34m╔════════════════════════════════════════════════╗\033[0m"
+  # echo "\033[0;34m║       TYPEMUSE GITOPS ORCHESTRATION ENGINE     ║\033[0m"
+  # echo "\033[0;34m╚════════════════════════════════════════════════╝\033[0m"
+  # echo "\033[0;33mOperator: $USER\033[0m"
+  # echo "\033[0;33mTimestamp: $(date '+%Y-%m-%d %H:%M:%S')\033[0m"
+  
+  # Run the script with all provided arguments
+  "$TYPEMUSE_REBASE_SCRIPT" "$@"
+  
+  # Get the exit status of the script
+  local status=$?
+  
+  if [[ $status -eq 0 ]]; then
+    echo "\033[0;32mBranch reconciliation completed successfully\033[0m"
+  else
+    echo "\033[0;31mBranch reconciliation encountered issues (exit code: $status)\033[0m"
+  fi
+  
+  # Return to the terminal with a clean line
+  echo ""
+  return $status
+}
+
+alias tmr="tmrebase"
