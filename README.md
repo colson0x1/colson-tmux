@@ -68,6 +68,21 @@ $ npx colson-tmux@latest
     - [**Manual Execution!**](#manual-execution)
     - [**Command File Example**](#command-file-example)
     - [**Concurrency in Action!!**](#concurrency-in-action)
+  - [⏰ Docker Maintenance Cron Job](#-docker-maintenance-cron-job)
+    - [Installation](#installation-1)
+      - [Arch Linux](#arch-linux)
+      - [macOS](#macos)
+    - [Creating the Cleanup Script](#creating-the-cleanup-script)
+    - [Setting Permissions](#setting-permissions)
+    - [Scheduling with Crontab](#scheduling-with-crontab)
+    - [Verifying Schedule](#verifying-schedule)
+    - [Testing Your Setup](#testing-your-setup)
+      - [Test Script Execution](#test-script-execution)
+      - [Test Cron Job Configuration](#test-cron-job-configuration)
+    - [Troubleshooting](#troubleshooting)
+      - [Check Cron Service](#check-cron-service)
+      - [Check Cron Logs](#check-cron-logs)
+      - [Common Issues](#common-issues)
 
 ## Features
 
@@ -444,5 +459,241 @@ ss <session-name> ssc
 ```shell
 ss TYPEMUSE ssc
 ```
+
+## ⏰ Docker Maintenance Cron Job
+
+Scheduling automatic Docker cleanup tasks using cron on Arch Linux and macOS.
+
+### Installation
+
+#### Arch Linux
+
+```bash
+# Install cronie package
+sudo pacman -S cronie
+
+# Enable and start the service
+sudo systemctl enable --now cronie
+
+# Verify service status
+sudo systemctl status cronie
+```
+
+#### macOS
+
+```bash
+# macOS has cron pre-installed, no installation needed
+# Verify it's running
+pgrep cron
+```
+
+### Creating the Cleanup Script
+
+```bash
+# Create directory
+sudo mkdir -p /opt/docker-maintenance
+
+# Create script file
+sudo nvim /opt/docker-maintenance/docker-cleanup.sh
+```
+
+Add the content thats in `tmux/docker-cleanup.sh` into your script thats located at `/opt/docker-maintenance/docker-cleanup.sh`:
+
+### Setting Permissions
+
+```bash
+# Make script executable
+sudo chmod +x /opt/docker-maintenance/docker-cleanup.sh
+
+# Verify permissions
+ls -la /opt/docker-maintenance/docker-cleanup.sh
+# Should show: -rwxr-xr-x
+```
+
+### Scheduling with Crontab
+
+```bash
+# Edit root's crontab with Neovim
+sudo EDITOR=nvim crontab -e
+```
+
+Add this line to run cleanup every Sunday at 2 AM:
+
+```
+0 2 * * 0 /opt/docker-maintenance/docker-cleanup.sh
+```
+
+### Verifying Schedule
+
+```bash
+# List scheduled cron jobs
+sudo crontab -l
+
+# Should show your entry:
+# 0 2 * * 0 /opt/docker-maintenance/docker-cleanup.sh
+```
+
+### Testing Your Setup
+
+#### Test Script Execution
+
+```bash
+# Run script manually
+sudo /opt/docker-maintenance/docker-cleanup.sh
+
+# Check log file
+sudo cat /var/log/docker-maintenance/docker-cleanup-$(date +%Y-%m-%d).log
+```
+You should see something like this!
+
+```
+[sudo] password for colson:
+➜  docker-maintenance: sudo cat /var/log/docker-maintenance/docker-cleanup-$(date +%Y-%m-%d).log
+
+[sudo] password for colson:
+[2025-04-02 10:08:33] Starting weekly Docker cleanup
+[2025-04-02 10:08:33] Initial disk usage:
+[2025-04-02 10:13:46] Pruning Docker system...
+[2025-04-02 10:13:53] Pruning builder cache...
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Deleted build cache objects:
+prf49e5wwszakjm898ebw5tzy
+po67ng1m0ro8x8z2buwpyka13
+rpabj5ogylhph4ajmtbeiaw1u
+4x9c3x4ve2u3thvl5a8bsr86x
+mibkugj0j8skks1kew0ok5vhl
+lxn3r4tv8ubg9o0g8wal6hd3s
+hfqvaes0jzfdzfgptoac8xm5f
+0hbakjahz1rq9ck9z8lf08gj6
+nm9xqsjbf493u3yrzp7rvh3sv
+qnblrkgy8zxlhlxpxlyhio2r3
+wlgjzsygj6ca7qse01h7rslon
+ac0ftzxuye9cfr6rn03e85gzt
+nkzke8qa4wfnbs83jvsykqqix
+mwlbpszruzn41vzg7pt78y1mr
+qk5uzmel14czh8gqynng565nj
+uzuyeevp6sj92qt7b6fsytbb5
+v1mj7k8hxub4nuij1d8mvaacn
+h9e40amajnnjo5rz4379cybdc
+rydwmnuku2nls213yv6llxevk
+udeum1vajqkmamlfmbydmd977
+l2iyignfbv8697kbkyiszou99
+unqny6n0mp191wle6k6g7w6t8
+ipil0rd2hldcj7jtq14770k5m
+m7gz5geztx33b6zedu3wkp98x
+fswfmryuje9dngqcxzzilpkzn
+uwai76t79n1y6sy4wdbqdl2im
+k72cbmxz1960cd5ytxnxz36ym
+756mj7g2197vupivtqztn0zvf
+u3lr96l8zcg03xnu8gjl2ze1x
+nw5frhqkeidblk2i9tdyqehbd
+wac50qxjqg7z8jqermm5vg5hm
+j78wpq65ilg1cbekr93pe9gcg
+p9ppg3u3kzcd5779go9dmh53o
+5fxmj2ep7yjcerz9jmxxlhhnk
+hxvbdbpbjd2rriqg4ec20wfi4
+qwop3yas4aex6nmcsazq3loc3
+dhsdj8aye16q0njkhb5j8jytb
+gt5xp7t9vwrdywoa2gb02pyw3
+mjru7unojgi0cwapfieeo4kxe
+nacuhe7vjo5pctq13315lmn4u
+8he3woftx0ir9ytxhr3gc0d0q
+qa4aihz7e86ffbodksagvvxqi
+mfkcme9jd7l8a4w7jeli908vs
+2zi75q5agzewquh450w5ep3qv
+vyjsfsbbk80m8ndzexw6im3ey
+ciyvt5jqhdr49kgboo4m72inp
+ejpkbsrjsr5p3601a5f5c1i1u
+qyv23c3wmytad0xrhb8kknylw
+wvedvjre4g34bnzom03rbs4ex
+jqnog6lp7m3xr75ocpmgds7hb
+3bnwpxocijdvu8xqjk75ri4m7
+c0v8h8y6l0oirm8g3py8d3hb8
+paevcrcwlv91vjfazuztxbixp
+irv1ngqqsvy5wxs7ffirjmat8
+xm21xrb34idyiyfen1snkcvfg
+d850ufu62f28nqpp33c11rhhg
+nh2z0miicgettg5cwxhitq3xt
+xw3sjapj27fh6ajjg8s25u20b
+bg6hqtu4gnuusxpqdhboqif7n
+
+Total reclaimed space: 821.4MB
+[2025-04-02 10:14:38] Final disk usage:
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          14        14        7.729GB   218.8MB (2%)
+Containers      14        14        17.28MB   0B (0%)
+Local Volumes   3         3         47.79MB   0B (0%)
+Build Cache     0         0         0B        0B
+[2025-04-02 10:23:11] Cleanup completed
+------------------------------------------
+[2025-04-02 10:26:05] Starting weekly Docker cleanup
+[2025-04-02 10:26:05] Initial disk usage:
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          14        14        7.729GB   218.8MB (2%)
+Containers      14        14        17.3MB    0B (0%)
+Local Volumes   3         3         47.79MB   0B (0%)
+Build Cache     0         0         0B        0B
+[2025-04-02 10:27:05] Pruning Docker system...
+Total reclaimed space: 0B
+[2025-04-02 10:27:06] Pruning builder cache...
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Total reclaimed space: 0B
+[2025-04-02 10:27:06] Final disk usage:
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          14        14        7.729GB   218.8MB (2%)
+Containers      14        14        17.31MB   0B (0%)
+Local Volumes   3         3         47.79MB   0B (0%)
+Build Cache     0         0         0B        0B
+[2025-04-02 10:28:54] Cleanup completed
+------------------------------------------
+➜  docker-maintenance:
+
+```
+
+#### Test Cron Job Configuration
+
+```bash
+# Arch Linux
+sudo run-parts --test /etc/cron.daily
+
+# macOS
+sudo /usr/lib/cron/tabs/
+```
+
+### Troubleshooting
+
+#### Check Cron Service
+
+```bash
+# Arch Linux
+sudo systemctl status cronie
+
+# macOS
+sudo launchctl list | grep cron
+```
+
+#### Check Cron Logs
+
+```bash
+# Arch Linux
+sudo journalctl -u cronie
+
+# macOS
+grep cron /var/log/system.log
+```
+
+#### Common Issues
+
+1. **Script not running**: Check script permissions and path
+2. **No logs created**: Ensure log directory is writable
+3. **Editor issues**: Use `export EDITOR=nvim` before running `crontab -e`
+
+---
 
 Peace!
