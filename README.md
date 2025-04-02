@@ -548,7 +548,7 @@ You should see something like this!
 
 ```
 [sudo] password for colson:
-➜  docker-maintenance: sudo cat /var/log/docker-maintenance/docker-cleanup-$(date +%Y-%m-%d).log
+➜  docker-maintenance sudo cat /var/log/docker-maintenance/docker-cleanup-$(date +%Y-%m-%d).log
 
 [sudo] password for colson:
 [2025-04-02 10:08:33] Starting weekly Docker cleanup
@@ -652,7 +652,7 @@ Local Volumes   3         3         47.79MB   0B (0%)
 Build Cache     0         0         0B        0B
 [2025-04-02 10:28:54] Cleanup completed
 ------------------------------------------
-➜  docker-maintenance:
+➜  docker-maintenance
 
 ```
 

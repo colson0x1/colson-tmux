@@ -1,0 +1,49 @@
+[init]
+	defaultBranch = main
+; [user]
+	; name = COLSON
+	; email = colson@google.com
+[core]
+	editor = nvim
+
+[alias]
+    # Rebase multiple branches on main in one command
+    rebase-all = "!f() { \
+        current_branch=$(git rev-parse --abbrev-ref HEAD); \
+        echo \"📌 Starting from branch: $current_branch\"; \
+        echo \"🔄 Updating main...\"; \
+        git checkout main && git pull; \
+        if [ $# -eq 0 ]; then \
+            # If no branches specified, find all feature branches \
+            echo \"🔍 No branches specified. Finding all feature branches...\"; \
+            branches=$(git for-each-ref --format='%(refname:short)' refs/heads/ | grep -v '^main$'); \
+        else \
+            # Use specified branches \
+            branches=\"$@\"; \
+        fi; \
+        success_branches=\"\"; \
+        failed_branches=\"\"; \
+        for branch in $branches; do \
+            echo \"\n🔄 Processing branch: $branch\"; \
+            if git checkout $branch; then \
+                if git rebase main; then \
+                    echo \"✅ Successfully rebased $branch on main\"; \
+                    success_branches=\"$success_branches $branch\"; \
+                else \
+                    echo \"❌ Failed to rebase $branch. Aborting this branch's rebase.\"; \
+                    git rebase --abort; \
+                    failed_branches=\"$failed_branches $branch\"; \
+                fi; \
+            else \
+                echo \"❌ Failed to checkout $branch. Skipping.\"; \
+                failed_branches=\"$failed_branches $branch\"; \
+            fi; \
+        done; \
+        echo \"\n📋 Summary:\"; \
+        echo \"✅ Successfully rebased:$success_branches\"; \
+        if [ -n \"$failed_branches\" ]; then \
+            echo \"❌ Failed to rebase:$failed_branches\"; \
+        fi; \
+        echo \"\n🔙 Returning to original branch: $current_branch\"; \
+        git checkout $current_branch; \
+    }; f"
