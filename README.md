@@ -83,6 +83,11 @@ $ npx colson-tmux@latest
       - [Check Cron Service](#check-cron-service)
       - [Check Cron Logs](#check-cron-logs)
       - [Common Issues](#common-issues)
+  - [🧬 Multi Branch Rebaser @ TYPEMUSE](#-multi-branch-rebaser--typemuse)
+    - [**@ Approach 1**](#-approach-1)
+    - [**🔥 @ Approach 2**](#--approach-2)
+      - [All \* Branches](#all--branches)
+      - [Specifying Branches](#specifying-branches)
 
 ## Features
 
@@ -544,6 +549,7 @@ sudo /opt/docker-maintenance/docker-cleanup.sh
 # Check log file
 sudo cat /var/log/docker-maintenance/docker-cleanup-$(date +%Y-%m-%d).log
 ```
+
 You should see something like this!
 
 ```
@@ -693,6 +699,63 @@ grep cron /var/log/system.log
 1. **Script not running**: Check script permissions and path
 2. **No logs created**: Ensure log directory is writable
 3. **Editor issues**: Use `export EDITOR=nvim` before running `crontab -e`
+
+---
+
+## 🧬 Multi Branch Rebaser @ TYPEMUSE
+
+### **@ Approach 1**
+
+Add the content of this file `~/.config/tmux/.gitconfig` to the global Git configuration at
+`~/.gitconfig`.
+
+And then you can use it like this:
+
+```
+# Rebase all feature branches
+$ git rebase-all
+
+# Rebase specific branches
+$ git rebase-all feature/payment-ui feature/payment-backend feature/analytics
+```
+
+### **🔥 @ Approach 2**
+
+1. First make the `rebase-typemuse.sh` script executable:
+
+```shell
+$ cd ~/.config/tmux
+$ sudo chmod +x rebase-typemuse.sh
+```
+
+2. Then, run the script:
+
+#### All \* Branches
+
+```
+tmrebase
+or
+tmr
+```
+
+#### Specifying Branches
+
+```
+# Rebase specific branches
+tmrebase feature/payment-ui feature/user-auth feature/analytics
+or
+tmr feature/login feature/dashboard
+```
+
+OR run manually:
+
+```
+# Rebase all branches (with interactive selection)
+$ ./rebase-typemuse.sh
+
+# Rebase specific branches
+$ ./rebase-typemuse.sh feature/payment-ui feature/payment-backend
+```
 
 ---
 
