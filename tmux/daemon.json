@@ -1,0 +1,38 @@
+{
+  "storage-driver": "overlay2",
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "50m",
+    "max-file": "5",
+    "compress": "true",
+    "labels": "production",
+    "env": "HOSTNAME,KUBERNETES_NAMESPACE,KUBERNETES_POD_NAME"
+  },
+  "builder": {
+    "gc": {
+      "enabled": true,
+      "defaultKeepStorage": "20GB"
+    }
+  },
+  "features": {
+    "buildkit": true
+  },
+  "default-runtime": "runc",
+  "dns": ["8.8.8.8", "1.1.1.1"],
+  "metrics-addr": "0.0.0.0:9323",
+  "experimental": true,
+  "max-concurrent-downloads": 10,
+  "max-concurrent-uploads": 10,
+  "live-restore": true,
+  "userland-proxy": false,
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "data-root": "/var/lib/docker",
+  "default-shm-size": "1G",
+  "default-ulimits": {
+    "nofile": {
+      "name": "nofile",
+      "hard": 64000,
+      "soft": 64000
+    }
+  }
+}
