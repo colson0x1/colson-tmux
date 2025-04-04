@@ -42,8 +42,8 @@ $ npx colson-tmux@latest
 
 - [Tmux Configuration with Zsh Goodness (colson-tmux npm)](#tmux-configuration-with-zsh-goodness-colson-tmux-npm)
   - [Installation through NPM](#installation-through-npm)
-    - [If you've already installed this before then for the latest pull, do:](#if-youve-already-installed-this-before-then-for-the-latest-pull-do)
-    - [`NOTE`: Read the documentation below for indepth wisdom on proper installation and uses!](#note-read-the-documentation-below-for-indepth-wisdom-on-proper-installation-and-uses)
+      - [If you've already installed this before then for the latest pull, do:](#if-youve-already-installed-this-before-then-for-the-latest-pull-do)
+      - [`NOTE`: Read the documentation below for indepth wisdom on proper installation and uses!](#note-read-the-documentation-below-for-indepth-wisdom-on-proper-installation-and-uses)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Screenshots](#screenshots)
@@ -68,7 +68,7 @@ $ npx colson-tmux@latest
     - [**Manual Execution!**](#manual-execution)
     - [**Command File Example**](#command-file-example)
     - [**Concurrency in Action!!**](#concurrency-in-action)
-  - [⏰ Docker Maintenance Cron Job](#-docker-maintenance-cron-job)
+  - [🛳️ Docker Maintenance Cron Job ⏰](#️-docker-maintenance-cron-job-)
     - [Installation](#installation-1)
       - [Arch Linux](#arch-linux)
       - [macOS](#macos)
@@ -83,12 +83,12 @@ $ npx colson-tmux@latest
       - [Check Cron Service](#check-cron-service)
       - [Check Cron Logs](#check-cron-logs)
       - [Common Issues](#common-issues)
+  - [🐳 Docker Daemon Configuration](#-docker-daemon-configuration)
   - [🧬 Multi Branch Rebaser @ TYPEMUSE](#-multi-branch-rebaser--typemuse)
     - [**@ Approach 1**](#-approach-1)
     - [**🔥 @ Approach 2**](#--approach-2)
-- [Rebase specific branches](#rebase-specific-branches)
-- [Rebase all branches (with interactive selection)](#rebase-all-branches-with-interactive-selection)
-- [Rebase specific branches](#rebase-specific-branches-1)
+      - [All \* Branches](#all--branches)
+      - [Specifying Branches](#specifying-branches)
 
 ## Features
 
@@ -466,7 +466,7 @@ ss <session-name> ssc
 ss TYPEMUSE ssc
 ```
 
-## ⏰ Docker Maintenance Cron Job
+## 🛳️ Docker Maintenance Cron Job ⏰
 
 Scheduling automatic Docker cleanup tasks using cron on Arch Linux and macOS.
 
@@ -700,6 +700,68 @@ grep cron /var/log/system.log
 1. **Script not running**: Check script permissions and path
 2. **No logs created**: Ensure log directory is writable
 3. **Editor issues**: Use `export EDITOR=nvim` before running `crontab -e`
+
+---
+
+## 🐳 Docker Daemon Configuration
+
+I've engineered this Docker daemon with a performance-first, production-ready approach. So what I've done is, implemented overlay2 storage driver for optimal performance while enabling comprehensive log management with rotation, compression, and K8s-aware environment variables.
+
+For CI/CD efficiency, I've activated BuildKit with automatic garbage collection, keeping storage clean at 20GB. In addition, I optimized network operations with redundant DNS (Google/Cloudflare), concurrent transfers (10 parallel downloads/uploads), and exposed metrics on port 9323 for comprehensive monitoring.
+
+So this configuration ensures high availability through live-restore capability, allowing container operations to continue during daemon updates. Furthermore, I've optimized System resource management with systemd cgroups integration, custom data root, generous 1GB default shared memory, and increased file handle limits (64K) to prevent resource exhaustion during peak loads.
+
+This configuration balances performance, observability, and reliability while enabling experimental features for future-proofing container infrastructure.
+
+Here's the implementation:
+
+1 .Create the folder if it does not exist:
+
+```shell
+$ sudo mkdir -p /etc/docker/
+```
+
+2 .Create the daemon configuration file if it does not exist:
+
+```shell
+$ sudo nvim /etc/docker/daemon.json
+```
+
+3. Copy the content of this file `~/.config/tmux/daemon.json` to the global Docker configuration at `/etc/docker/daemon.json`.
+
+```shell
+$ sudo cp ~/.config/tmux/daemon.json /etc/docker/daemon.json
+```
+
+4. Stop Docker services:
+
+```shell
+$ sudo systemctl stop docker.service
+$ sudo systemctl stop docker.socket
+$ sudo systemctl stop containerd.service
+```
+
+5. Restart Docker services (This will recreate the directory structure):
+
+```
+$ sudo systemctl start docker
+```
+
+6. Verify Docker is working:
+
+```shell
+$ docker info
+$ docker run hello-world
+$ docker ps
+```
+
+7. Restart Docker Daemon:
+
+```shell
+$ sudo systemctl daemon-reload
+$ sudo systemctl start docker
+$ sudo systemctl status docker
+```
 
 ---
 
