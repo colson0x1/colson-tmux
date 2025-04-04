@@ -11,14 +11,13 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-# path to Golang
-# export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# @ Java (OpenJDK)
+export JAVA_HOME=/usr/lib/jvm/default
+export PATH=$JAVA_HOME/bin:$PATH
 
-# export GOPATH=$HOME/golang
-# export GOROOT=/usr/local/opt/go/libexec
-# export PATH=$PATH:$GOPATH/bin
-# export PATH=$PATH:$GOROOT/bin
+# path to Golang
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
