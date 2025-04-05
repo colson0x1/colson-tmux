@@ -8,76 +8,105 @@
 
 [alias]
     # Rebase multiple branches on main in one command
-    rebase-all = "!bash -c 'current_branch=$(git rev-parse --abbrev-ref HEAD); \
-echo \"📌 Starting from branch: $current_branch\"; \
-echo \"🔄 Updating main...\"; \
-git checkout main && git pull; \
-if [ $? -ne 0 ]; then \
-    echo \"❌ Failed to update main branch. Aborting.\"; \
-    git checkout \"$current_branch\"; \
-    exit 1; \
-fi; \
-if [ $# -eq 0 ]; then \
-    echo \"🔍 No branches specified. Finding all feature branches...\"; \
-    branches=$(git for-each-ref --format=\"%(refname:short)\" refs/heads/ | grep -v \"^main$\"); \
-    if [ -z \"$branches\" ]; then \
-        echo \"⚠️ No feature branches found. Only main branch exists.\"; \
-        echo \"❌ Nothing to rebase. Exiting.\"; \
-        git checkout \"$current_branch\"; \
-        exit 0; \
-    fi; \
-    echo \"Found the following branches:\"; \
-    i=1; \
-    declare -a branch_array; \
-    for b in $branches; do \
-        echo \"$i) $b\"; \
-        branch_array[$i]=$b; \
-        i=$((i+1)); \
-    done; \
-    echo \"Enter branch numbers to rebase (space-separated), or all for all branches:\"; \
-    read selection; \
-    if [ \"$selection\" = \"all\" ]; then \
-        selected_branches=$branches; \
-    else \
-        selected_branches=\"\"; \
-        for num in $selection; do \
-            if [ -n \"${branch_array[$num]}\" ]; then \
-                selected_branches=\"$selected_branches ${branch_array[$num]}\"; \
+    rba = "!f() { \
+        export GREEN='\\033[0;32m'; \
+        export RED='\\033[0;31m'; \
+        export BLUE='\\033[0;34m'; \
+        export YELLOW='\\033[0;33m'; \
+        export CYAN='\\033[0;36m'; \
+        export NC='\\033[0m'; \
+        GITHUB_USERNAME=$(git config user.name 2>/dev/null || echo $(whoami)); \
+        GIT_EMAIL=$(git config user.email 2>/dev/null || echo ''); \
+        SYSTEM_USER=$(whoami); \
+        current_branch=$(git rev-parse --abbrev-ref HEAD); \
+        echo -e \"${BLUE}╔════════════════════════════════════════════════╗${NC}\"; \
+        echo -e \"${BLUE}║       TYPEMUSE GITOPS ORCHESTRATION ENGINE     ║${NC}\"; \
+        echo -e \"${BLUE}╚════════════════════════════════════════════════╝${NC}\"; \
+        echo -e \"${YELLOW}Operator: ${GITHUB_USERNAME} (@${SYSTEM_USER})${NC}\"; \
+        echo -e \"${YELLOW}Timestamp: $(date '+%Y-%m-%d %H:%M:%S') UTC${NC}\"; \
+        if [ ! -z \"$GIT_EMAIL\" ]; then \
+            echo -e \"${YELLOW}Git Email: ${GIT_EMAIL}${NC}\"; \
+        fi; \
+        echo -e \"${CYAN}Current branch: ${current_branch}${NC}\"; \
+        echo -e \"\\n${BLUE}[1/3]${NC} Updating main branch...\"; \
+        git checkout main && git pull; \
+        if [ $? -ne 0 ]; then \
+            echo -e \"${RED}Failed to update main branch. Aborting.${NC}\"; \
+            git checkout $current_branch; \
+            return 1; \
+        fi; \
+        echo -e \"${GREEN}Main branch updated successfully.${NC}\"; \
+        if [ $# -eq 0 ]; then \
+            echo -e \"\\n${BLUE}[2/3]${NC} No branches specified. Finding feature branches...\"; \
+            branches=$(git for-each-ref --format='%(refname:short)' refs/heads/ | grep -v '^main$'); \
+            if [ -z \"$branches\" ]; then \
+                echo -e \"${YELLOW}No feature branches found. Only 'main' branch exists.${NC}\"; \
+                echo -e \"${RED}Nothing to reconcile. Exiting.${NC}\"; \
+                git checkout $current_branch; \
+                return 0; \
+            fi; \
+            echo -e \"${YELLOW}Found the following branches:${NC}\"; \
+            declare -a select_branches; \
+            i=1; \
+            for branch in $branches; do \
+                echo -e \"${YELLOW}$i)${NC} $branch\"; \
+                select_branches[$i]=$branch; \
+                i=$((i+1)); \
+            done; \
+            echo -e \"${YELLOW}Enter branch numbers to reconcile (space-separated), or 'all' for all branches:${NC}\"; \
+            read -r selection; \
+            if [ \"$selection\" = \"all\" ]; then \
+                final_branches=($branches); \
+            else \
+                declare -a final_branches; \
+                for num in $selection; do \
+                    if [[ $num =~ ^[0-9]+$ ]] && [ $num -ge 1 ] && [ $num -lt $i ]; then \
+                        final_branches+=($branch); \
+                    fi; \
+                done; \
+            fi; \
+        else \
+            final_branches=($@); \
+        fi; \
+        if [ ${#final_branches[@]} -eq 0 ]; then \
+            echo -e \"${RED}No valid branches selected. Exiting.${NC}\"; \
+            git checkout $current_branch; \
+            return 1; \
+        fi; \
+        echo -e \"\\n${BLUE}[3/3]${NC} Reconciling selected branches with main...\"; \
+        declare -a success_branches; \
+        declare -a failed_branches; \
+        for branch in ${final_branches[@]}; do \
+            echo -e \"\\n${YELLOW}Processing: ${branch}${NC}\"; \
+            if git checkout $branch; then \
+                if git rebase main; then \
+                    echo -e \"${GREEN}✅ Successfully reconciled $branch with main${NC}\"; \
+                    success_branches+=($branch); \
+                else \
+                    echo -e \"${RED}❌ Failed to reconcile $branch. Aborting this branch's integration.${NC}\"; \
+                    git rebase --abort; \
+                    failed_branches+=($branch); \
+                fi; \
+            else \
+                echo -e \"${RED}❌ Failed to checkout $branch. Skipping.${NC}\"; \
+                failed_branches+=($branch); \
             fi; \
         done; \
-    fi; \
-    if [ -z \"$selected_branches\" ]; then \
-        echo \"❌ No valid branches selected. Exiting.\"; \
-        git checkout \"$current_branch\"; \
-        exit 1; \
-    fi; \
-    branches=$selected_branches; \
-else \
-    branches=\"$@\"; \
-fi; \
-success_branches=\"\"; \
-failed_branches=\"\"; \
-for branch in $branches; do \
-    echo \"\n🔄 Processing branch: $branch\"; \
-    if git checkout \"$branch\"; then \
-        if git rebase main; then \
-            echo \"✅ Successfully rebased $branch on main\"; \
-            success_branches=\"$success_branches $branch\"; \
-        else \
-            echo \"❌ Failed to rebase $branch. Aborting rebase.\"; \
-            git rebase --abort; \
-            failed_branches=\"$failed_branches $branch\"; \
+        echo -e \"\\n${BLUE}══════════════ INTEGRATION SUMMARY ══════════════${NC}\"; \
+        echo -e \"${GREEN}Successfully reconciled (${#success_branches[@]}):${NC}\"; \
+        for branch in ${success_branches[@]}; do \
+            echo -e \"${GREEN}  ✓ $branch${NC}\"; \
+        done; \
+        if [ ${#failed_branches[@]} -gt 0 ]; then \
+            echo -e \"\\n${RED}Failed to reconcile (${#failed_branches[@]}):${NC}\"; \
+            for branch in ${failed_branches[@]}; do \
+                echo -e \"${RED}  ✗ $branch${NC}\"; \
+            done; \
         fi; \
-    else \
-        echo \"❌ Failed to checkout $branch. Skipping.\"; \
-        failed_branches=\"$failed_branches $branch\"; \
-    fi; \
-done; \
-echo \"\n📋 Summary:\"; \
-echo \"✅ Successfully rebased:$success_branches\"; \
-if [ -n \"$failed_branches\" ]; then \
-    echo \"❌ Failed to rebase:$failed_branches\"; \
-fi; \
-echo \"\n🔙 Returning to original branch: $current_branch\"; \
-git checkout \"$current_branch\"; \
-' -"
+        echo -e \"\\n${BLUE}Returning to original branch: $current_branch${NC}\"; \
+        git checkout $current_branch; \
+        echo -e \"\\n${BLUE}╔════════════════════════════════════════════════╗${NC}\"; \
+        echo -e \"${BLUE}║         ORCHESTRATION CYCLE COMPLETED          ║${NC}\"; \
+        echo -e \"${BLUE}╚════════════════════════════════════════════════╝${NC}\"; \
+    }; f"
+
