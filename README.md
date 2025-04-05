@@ -42,8 +42,8 @@ $ npx colson-tmux@latest
 
 - [Tmux Configuration with Zsh Goodness (colson-tmux npm)](#tmux-configuration-with-zsh-goodness-colson-tmux-npm)
   - [Installation through NPM](#installation-through-npm)
-      - [If you've already installed this before then for the latest pull, do:](#if-youve-already-installed-this-before-then-for-the-latest-pull-do)
-      - [`NOTE`: Read the documentation below for indepth wisdom on proper installation and uses!](#note-read-the-documentation-below-for-indepth-wisdom-on-proper-installation-and-uses)
+    - [If you've already installed this before then for the latest pull, do:](#if-youve-already-installed-this-before-then-for-the-latest-pull-do)
+    - [`NOTE`: Read the documentation below for indepth wisdom on proper installation and uses!](#note-read-the-documentation-below-for-indepth-wisdom-on-proper-installation-and-uses)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Screenshots](#screenshots)
@@ -741,10 +741,12 @@ $ sudo systemctl stop docker.socket
 $ sudo systemctl stop containerd.service
 ```
 
-5. Restart Docker services (This will recreate the directory structure):
+5. Restart Docker Daemon & Services (This will recreate the directory structure):
 
 ```
+$ sudo systemctl daemon-reload
 $ sudo systemctl start docker
+$ sudo systemctl status docker
 ```
 
 6. Verify Docker is working:
@@ -753,14 +755,6 @@ $ sudo systemctl start docker
 $ docker info
 $ docker run hello-world
 $ docker ps
-```
-
-7. Restart Docker Daemon:
-
-```shell
-$ sudo systemctl daemon-reload
-$ sudo systemctl start docker
-$ sudo systemctl status docker
 ```
 
 ---
@@ -774,12 +768,14 @@ Add the content of this file `~/.config/tmux/.gitconfig` to the global Git confi
 
 And then you can use it like this:
 
+Quick Info -> **`rba`** stands for **Rebase ALL**.
+
 ```
 # Rebase all feature branches
-$ git rebase-all
+$ git rba
 
 # Rebase specific branches
-$ git rebase-all feature/payment-ui feature/payment-backend feature/analytics
+$ git rba feature/payment-ui feature/payment-backend feature/analytics
 ```
 
 ### **🔥 @ Approach 2**
