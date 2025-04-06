@@ -89,6 +89,7 @@ $ npx colson-tmux@latest
     - [**🔥 @ Approach 2**](#--approach-2)
       - [All \* Branches](#all--branches)
       - [Specifying Branches](#specifying-branches)
+  - [📡 Machine IP Address Tool](#-machine-ip-address-tool)
 
 ## Features
 
@@ -815,6 +816,12 @@ $ ./rebase-typemuse.sh
 # Rebase specific branches
 $ ./rebase-typemuse.sh feature/payment-ui feature/payment-backend
 ```
+
+---
+
+## 📡 Machine IP Address Tool
+
+Run **`1.1.1.1`** or **`xip`** to get your machine's **private** & **public** **IP** addresses.
 
 ---
 
