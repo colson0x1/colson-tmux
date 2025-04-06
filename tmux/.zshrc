@@ -302,3 +302,7 @@ function tmrebase() {
 }
 
 alias tmr="tmrebase"
+
+# @ Machine private/public IP
+alias xip='[ -x ~/.config/tmux/machine-ip.sh ] || chmod +x ~/.config/tmux/machine-ip.sh; ~/.config/tmux/machine-ip.sh'
+alias 1.1.1.1='[ -x ~/.config/tmux/machine-ip.sh ] || chmod +x ~/.config/tmux/machine-ip.sh; ~/.config/tmux/machine-ip.sh'
