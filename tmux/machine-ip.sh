@@ -15,9 +15,20 @@ DIM='\033[2m'
 ITALIC='\033[3m'
 UNDERLINE='\033[4m'
 
-# Current date and user data
-CURRENT_USER="colson0x1"
-UTC_TIME="2025-04-06 05:40:07"
+# Get current date/time and user dynamically
+# Multiple options to get current user
+if [ -n "$USER" ]; then
+    CURRENT_USER="$USER"
+elif command -v whoami >/dev/null 2>&1; then
+    CURRENT_USER=$(whoami)
+elif [ -n "$LOGNAME" ]; then
+    CURRENT_USER="$LOGNAME"
+else
+    CURRENT_USER="colson0x1" # Fallback to hardcoded value
+fi
+
+# Get current UTC time
+UTC_TIME=$(date -u '+%Y-%m-%d %H:%M:%S')
 
 # Progress indication
 echo -e "${BOLD}${BLUE}⏳ Initializing network scan...${NC}"
@@ -90,7 +101,7 @@ echo ""
 echo ""
 center "🌐 NETWORK INFORMATION 🌐" "${BOLD}${CYAN}"
 center "[ Developed by COLSON ]" "${GREEN}"
-echo -e "${GRAY}   Build 2.1.4 • Last scan: $(date '+%H:%M:%S')${NC}"
+echo -e "${GRAY}   Build 1.0.0 • Last scan: $(date '+%H:%M:%S')${NC}"
 echo ""
 
 # System info section
