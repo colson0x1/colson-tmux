@@ -2,6 +2,8 @@
 
 Unlock the full potential of your terminal with this meticulously crafted tmux configuration, accompanied by a versatile Zsh script for effortlessly launching websites and applications. 🔥
 
+![colson tmux npm on arch linux machine](https://i.imgur.com/5c6IRsM.png)
+
 ![colson tmux npm](https://i.imgur.com/3PiJBBO.png)
 
 ## Installation through NPM
