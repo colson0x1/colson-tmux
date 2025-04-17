@@ -6,12 +6,35 @@ Unlock the full potential of your terminal with this meticulously crafted tmux c
 
 ![colson tmux npm](https://i.imgur.com/3PiJBBO.png)
 
+## Make ZSH default shell
+
+```shell
+$ sudo pacman -S zsh
+$ which zsh
+// Output -> /usr/bin/zsh
+
+// Make ZSH as default!
+$ chsh -s /usr/bin/zsh
+// OR
+$ chsh -s $(which zsh)
+
+// Now Restart your machine
+$ reboot
+// Verify SHELL
+$ echo $SHELL
+```
+
 ## Installation through NPM
 
-Ensure **Tmux** is installed on your machine!  
+Ensure **Tmux** is installed on your machine!
+
 `Tmux leader key`-> **`Ctrl + Space`**
 
 ```shell
+// Install Tmux
+$ sudo pacman -S tmux
+
+// Install colson-tmux
 $ npx colson-tmux
 $ cd ~/.config/tmux
 $ tmux
