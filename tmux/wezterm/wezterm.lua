@@ -160,38 +160,46 @@ local function create_url_opener(url)
 end
 
 --------------------------------------------------
--- Tokyo Night Theme Settings
+-- Crimson Dark Theme Settings
 --------------------------------------------------
--- Define Tokyo Night color palette for consistency across tools
-local tokyo_night = {
-	bg = "#1a1b26",
-	bg_dark = "#16161e",
-	bg_highlight = "#292e42",
-	terminal_black = "#414868",
-	fg = "#c0caf5",
-	fg_dark = "#a9b1d6",
-	fg_gutter = "#3b4261",
-	dark3 = "#545c7e",
-	comment = "#565f89",
-	blue = "#7aa2f7",
-	cyan = "#7dcfff",
-	blue0 = "#3d59a1",
-	blue1 = "#2ac3de",
-	blue2 = "#0db9d7",
-	blue5 = "#89ddff",
-	blue6 = "#b4f9f8",
-	blue7 = "#394b70",
-	magenta = "#bb9af7",
-	magenta2 = "#ff007c",
-	purple = "#9d7cd8",
-	orange = "#ff9e64",
-	yellow = "#e0af68",
-	green = "#9ece6a",
-	green1 = "#73daca",
-	green2 = "#41a6b5",
-	teal = "#1abc9c",
-	red = "#f7768e",
-	red1 = "#db4b4b",
+-- A custom dark theme with reddish tones, designed for professionals
+-- who appreciate a darker aesthetic with vibrant accents.
+local crimson_dark = {
+	-- Base colors
+	bg = "#0A0A0C", -- Near-black background
+	bg_highlight = "#1A1A1E", -- Slightly lighter for highlights
+	bg_accent = "#2A1015", -- Very dark red tint for accents
+
+	-- Foreground colors
+	fg = "#E5E5E9", -- Light grey for main text
+	fg_dark = "#C0C0C6", -- Slightly darker grey for secondary text
+	fg_muted = "#8C8C96", -- Muted text
+
+	-- Red accents (primary theme color)
+	red_bright = "#FF3B51", -- Bright red for primary accents
+	red = "#E02B40", -- Standard red
+	red_muted = "#C02535", -- Muted red
+	red_dark = "#801A25", -- Dark red for subtle highlights
+
+	-- Supporting colors
+	orange = "#FF7D4A", -- Orange accent
+	yellow = "#FFCA80", -- Softer yellow
+	green = "#7AE0A0", -- Subdued green
+	cyan = "#56D1E0", -- Subdued cyan
+	blue = "#6B9BDF", -- Subdued blue
+	purple = "#BD93F9", -- Purple accent
+	magenta = "#E986C0", -- Magenta accent
+
+	-- UI element colors
+	black = "#121216", -- Black for UI elements
+	bright_black = "#4D4D59", -- Brighter black for UI
+	white = "#F0F0F5", -- White
+
+	-- Special colors
+	error = "#FF2E3F", -- Error color
+	warning = "#FFAA33", -- Warning color
+	info = "#5CA8FF", -- Info color
+	hint = "#9292A0", -- Hint color
 }
 
 --------------------------------------------------
@@ -239,397 +247,92 @@ config.webgpu_preferred_adapter = nil
 config.animation_fps = 60
 
 --------------------------------------------------
--- Tokyo Night Theme for WezTerm
+-- Crimson Dark Theme for WezTerm
 --------------------------------------------------
--- A meticulously crafted theme inspired by Tokyo's night cityscape,
--- designed for distinguished engineers and UI/UX professionals.
--- This theme perfectly complements the Tokyo Night theme in Neovim and tmux.
+-- A professionally designed dark theme with reddish accents,
+-- optimized for reducing eye strain during long coding sessions
+-- while providing a visually distinctive aesthetic.
 
 config.colors = {
 	-- Base colors
-	foreground = tokyo_night.fg,
-	background = tokyo_night.bg,
+	foreground = crimson_dark.fg,
+	background = crimson_dark.bg,
 
 	-- Cursor
-	cursor_bg = tokyo_night.fg,
-	cursor_fg = tokyo_night.bg,
-	cursor_border = tokyo_night.fg,
+	cursor_bg = crimson_dark.red_bright,
+	cursor_fg = crimson_dark.bg,
+	cursor_border = crimson_dark.red_bright,
 
 	-- Selection
-	selection_fg = tokyo_night.bg,
-	selection_bg = tokyo_night.bg_highlight,
+	selection_fg = crimson_dark.fg,
+	selection_bg = crimson_dark.bg_accent,
 
 	-- Normal colors (ANSI 0-7)
 	ansi = {
-		tokyo_night.bg_dark, -- Black
-		tokyo_night.red, -- Red
-		tokyo_night.green, -- Green
-		tokyo_night.yellow, -- Yellow
-		tokyo_night.blue, -- Blue
-		tokyo_night.magenta, -- Magenta
-		tokyo_night.cyan, -- Cyan
-		tokyo_night.fg_dark, -- White
+		crimson_dark.black, -- Black
+		crimson_dark.red, -- Red
+		crimson_dark.green, -- Green
+		crimson_dark.yellow, -- Yellow
+		crimson_dark.blue, -- Blue
+		crimson_dark.magenta, -- Magenta
+		crimson_dark.cyan, -- Cyan
+		crimson_dark.fg_dark, -- White
 	},
 
 	-- Bright colors (ANSI 8-15)
 	brights = {
-		tokyo_night.terminal_black, -- Bright Black
-		tokyo_night.red1, -- Bright Red
-		tokyo_night.green1, -- Bright Green
-		tokyo_night.orange, -- Bright Yellow
-		tokyo_night.blue1, -- Bright Blue
-		tokyo_night.magenta, -- Bright Magenta
-		tokyo_night.blue2, -- Bright Cyan
-		tokyo_night.fg, -- Bright White
+		crimson_dark.bright_black, -- Bright Black
+		crimson_dark.red_bright, -- Bright Red
+		crimson_dark.green, -- Bright Green
+		crimson_dark.orange, -- Bright Yellow (using orange)
+		crimson_dark.blue, -- Bright Blue
+		crimson_dark.purple, -- Bright Magenta
+		crimson_dark.cyan, -- Bright Cyan
+		crimson_dark.white, -- Bright White
 	},
 
 	-- Extended colors for UI accents
 	indexed = {
-		[16] = tokyo_night.orange, -- Orange
-		[17] = tokyo_night.red1, -- Error red
+		[16] = crimson_dark.orange, -- Orange
+		[17] = crimson_dark.error, -- Error red
 	},
 
 	-- Tab bar (even though it's disabled, for consistency)
 	tab_bar = {
-		background = tokyo_night.bg_dark,
+		background = crimson_dark.bg,
 		active_tab = {
-			bg_color = tokyo_night.bg,
-			fg_color = tokyo_night.blue,
+			bg_color = crimson_dark.bg_accent,
+			fg_color = crimson_dark.red_bright,
 			intensity = "Bold",
 		},
 		inactive_tab = {
-			bg_color = tokyo_night.bg_dark,
-			fg_color = tokyo_night.dark3,
+			bg_color = crimson_dark.bg,
+			fg_color = crimson_dark.fg_muted,
 		},
 		inactive_tab_hover = {
-			bg_color = tokyo_night.bg,
-			fg_color = tokyo_night.blue,
+			bg_color = crimson_dark.bg_highlight,
+			fg_color = crimson_dark.red,
 		},
 		new_tab = {
-			bg_color = tokyo_night.bg_dark,
-			fg_color = tokyo_night.dark3,
+			bg_color = crimson_dark.bg,
+			fg_color = crimson_dark.fg_muted,
 		},
 		new_tab_hover = {
-			bg_color = tokyo_night.bg,
-			fg_color = tokyo_night.blue,
+			bg_color = crimson_dark.bg_highlight,
+			fg_color = crimson_dark.red,
 		},
 	},
 }
 
 --------------------------------------------------
--- Environment Variables for Theme Consistency
+-- Environment Variables
 --------------------------------------------------
--- Set environment variables to ensure consistent theming across tools
+-- Set environment variables for consistent terminal experience
 config.set_environment_variables = {
-	-- For Neovim - ensure it knows we want Tokyo Night theme
-	NVIM_THEME = "tokyonight",
-
 	-- Terminal capabilities for proper color support
 	COLORTERM = "truecolor",
 	TERM = "xterm-256color",
-
-	-- Tokyo Night specific environment variables
-	TOKYONIGHT_STYLE = "night",
 }
-
---------------------------------------------------
--- Neovim Integration - Create init.lua
---------------------------------------------------
--- This section creates a Neovim config that automatically applies Tokyo Night
--- when launched from WezTerm, ensuring theme consistency
-
-local nvim_tokyo_night_config_path = home_dir .. "/.config/nvim/tokyo_night.lua"
-local nvim_tokyo_night_content = [[
--- Tokyo Night theme configuration for Neovim
--- This file is automatically generated by WezTerm
-
--- Only load this file if we're in WezTerm
-if vim.env.WEZTERM_PANE then
-  -- Set colorscheme to Tokyo Night
-  vim.cmd('colorscheme tokyonight')
-  
-  -- Ensure the correct variant is used
-  vim.g.tokyonight_style = "night"
-  
-  -- Enable transparent background if supported
-  vim.g.tokyonight_transparent = false
-  vim.g.tokyonight_transparent_sidebar = false
-  
-  -- Ensure terminal colors match
-  vim.g.terminal_color_0 = "#16161e"
-  vim.g.terminal_color_1 = "#f7768e"
-  vim.g.terminal_color_2 = "#9ece6a"
-  vim.g.terminal_color_3 = "#e0af68"
-  vim.g.terminal_color_4 = "#7aa2f7"
-  vim.g.terminal_color_5 = "#bb9af7"
-  vim.g.terminal_color_6 = "#7dcfff"
-  vim.g.terminal_color_7 = "#a9b1d6"
-  vim.g.terminal_color_8 = "#414868"
-  vim.g.terminal_color_9 = "#f7768e"
-  vim.g.terminal_color_10 = "#9ece6a"
-  vim.g.terminal_color_11 = "#e0af68"
-  vim.g.terminal_color_12 = "#7aa2f7"
-  vim.g.terminal_color_13 = "#bb9af7"
-  vim.g.terminal_color_14 = "#7dcfff"
-  vim.g.terminal_color_15 = "#c0caf5"
-end
-
--- Return module for importing
-return {
-  style = "night",
-  colors = {
-    bg = "#1a1b26",
-    bg_dark = "#16161e",
-    bg_highlight = "#292e42",
-    terminal_black = "#414868",
-    fg = "#c0caf5",
-    fg_dark = "#a9b1d6",
-    fg_gutter = "#3b4261",
-    dark3 = "#545c7e",
-    comment = "#565f89",
-    blue = "#7aa2f7",
-    cyan = "#7dcfff",
-    blue0 = "#3d59a1",
-    blue1 = "#2ac3de",
-    blue2 = "#0db9d7",
-    blue5 = "#89ddff",
-    blue6 = "#b4f9f8",
-    blue7 = "#394b70",
-    magenta = "#bb9af7",
-    magenta2 = "#ff007c",
-    purple = "#9d7cd8",
-    orange = "#ff9e64",
-    yellow = "#e0af68",
-    green = "#9ece6a",
-    green1 = "#73daca",
-    green2 = "#41a6b5",
-    teal = "#1abc9c",
-    red = "#f7768e",
-    red1 = "#db4b4b",
-  }
-}
-]]
-
--- Also create an init.lua detection file
-local nvim_init_check_path = home_dir .. "/.config/nvim/init_wezterm.lua"
-local nvim_init_check_content = [[
--- WezTerm integration for Neovim
--- This file is automatically generated by WezTerm
-
--- Only load this if we're in WezTerm
-if vim.env.WEZTERM_PANE then
-  -- Check if Tokyo Night plugin is installed
-  local has_tokyonight = pcall(require, "tokyonight")
-  
-  if has_tokyonight then
-    -- Load the plugin and set the style
-    vim.cmd('colorscheme tokyonight')
-    vim.g.tokyonight_style = "night"
-  else
-    -- Print a message that the plugin needs to be installed
-    vim.api.nvim_echo({
-      {"Tokyo Night theme not found. Install with your package manager:", "WarningMsg"},
-      {"", ""},
-      {"\nFor packer.nvim:", "Title"},
-      {"\nuse 'folke/tokyonight.nvim'", ""},
-      {"\n\nFor vim-plug:", "Title"},
-      {"\nPlug 'folke/tokyonight.nvim'", ""}
-    }, true, {})
-    
-    -- Set some basic colors that approximate Tokyo Night
-    vim.cmd('highlight Normal guibg=#1a1b26 guifg=#c0caf5')
-    vim.cmd('highlight LineNr guifg=#3b4261')
-    vim.cmd('highlight CursorLine guibg=#292e42')
-    vim.cmd('highlight Pmenu guibg=#1a1b26 guifg=#c0caf5')
-    vim.cmd('highlight PmenuSel guibg=#292e42 guifg=#c0caf5')
-    vim.cmd('highlight Comment guifg=#565f89')
-    vim.cmd('highlight Statement guifg=#bb9af7')
-    vim.cmd('highlight Identifier guifg=#7aa2f7')
-    vim.cmd('highlight Function guifg=#7aa2f7')
-    vim.cmd('highlight String guifg=#9ece6a')
-    vim.cmd('highlight Constant guifg=#ff9e64')
-    vim.cmd('highlight Type guifg=#2ac3de')
-    vim.cmd('highlight Special guifg=#e0af68')
-  end
-end
-]]
-
--- Function to ensure Neovim configuration exists
-local function ensure_nvim_config()
-	-- Ensure the config directory exists
-	local nvim_config_dir = home_dir .. "/.config/nvim"
-	wezterm.run_child_process({ "mkdir", "-p", nvim_config_dir })
-
-	-- Write the Tokyo Night theme configuration
-	local file = io.open(nvim_tokyo_night_config_path, "w")
-	if file then
-		file:write(nvim_tokyo_night_content)
-		file:close()
-		log("Created Neovim Tokyo Night theme configuration")
-	else
-		log("Failed to create Neovim configuration file")
-	end
-
-	-- Write the init detection file
-	local init_file = io.open(nvim_init_check_path, "w")
-	if init_file then
-		init_file:write(nvim_init_check_content)
-		init_file:close()
-		log("Created Neovim WezTerm integration file")
-	else
-		log("Failed to create Neovim integration file")
-	end
-
-	-- Check if init.lua exists, if not create it with a simple loader
-	local init_exists = wezterm.run_child_process({ "test", "-f", nvim_config_dir .. "/init.lua" })
-	if not init_exists then
-		local init_main = io.open(nvim_config_dir .. "/init.lua", "w")
-		if init_main then
-			init_main:write([[
--- Auto-generated Neovim config by WezTerm
--- Load WezTerm integration if available
-local wezterm_init = vim.fn.expand('~/.config/nvim/init_wezterm.lua')
-if vim.fn.filereadable(wezterm_init) == 1 then
-  dofile(wezterm_init)
-end
-
--- Your custom Neovim configuration goes here
-]])
-			init_main:close()
-			log("Created basic Neovim init.lua")
-		end
-	else
-		-- Ensure init.lua loads our integration
-		local init_content = io.open(nvim_config_dir .. "/init.lua", "r")
-		if init_content then
-			local content = init_content:read("*all")
-			init_content:close()
-
-			if not content:find("init_wezterm.lua") then
-				local init_update = io.open(nvim_config_dir .. "/init.lua", "w")
-				if init_update then
-					init_update:write([[
--- WezTerm integration (auto-inserted)
-local wezterm_init = vim.fn.expand('~/.config/nvim/init_wezterm.lua')
-if vim.fn.filereadable(wezterm_init) == 1 then
-  dofile(wezterm_init)
-end
-
-]] .. content)
-					init_update:close()
-					log("Updated existing Neovim init.lua with WezTerm integration")
-				end
-			end
-		end
-	end
-end
-
--- Set up Neovim configuration if nvim is available
-if command_exists("nvim") then
-	ensure_nvim_config()
-end
-
---------------------------------------------------
--- Tmux Configuration - Tokyo Night Theme
---------------------------------------------------
--- Generate tmux config with matching Tokyo Night theme
-local tmux_config_path = home_dir .. "/.tmux.tokyo-night.conf"
-local tmux_config_content = [[
-# Tokyo Night theme for tmux
-# Designed to match WezTerm and Neovim configurations
-
-# Enable true color support
-set -g default-terminal "tmux-256color"
-set -ag terminal-overrides ",xterm-256color:RGB"
-
-# Set environment variables for Neovim theme consistency
-set-environment -g NVIM_THEME tokyonight
-set-environment -g TOKYONIGHT_STYLE night
-
-# Status bar colors
-set -g status-style "bg=#16161e,fg=#7aa2f7"
-
-# Window list colors
-set -g window-status-current-style "bg=#3b4261,fg=#7aa2f7,bold"
-set -g window-status-style "bg=#16161e,fg=#565f89"
-
-# Pane borders
-set -g pane-border-style "fg=#3b4261"
-set -g pane-active-border-style "fg=#7aa2f7"
-
-# Message colors
-set -g message-style "bg=#3b4261,fg=#7aa2f7,bold"
-set -g message-command-style "bg=#3b4261,fg=#7aa2f7,bold"
-
-# Clock mode
-set -g clock-mode-colour "#7aa2f7"
-
-# Status bar layout
-set -g status-left "#[fg=#1a1b26,bg=#7aa2f7,bold] #S #[fg=#7aa2f7,bg=#16161e,nobold]"
-set -g window-status-format " #I:#W "
-set -g window-status-current-format "#[fg=#16161e,bg=#3b4261]#[fg=#7aa2f7,bg=#3b4261] #I:#W #[fg=#3b4261,bg=#16161e]"
-set -g status-right "#[fg=#3b4261,bg=#16161e]#[fg=#7aa2f7,bg=#3b4261] %Y-%m-%d #[fg=#1a1b26,bg=#7aa2f7] %H:%M "
-
-# Set status bar position and length
-set -g status-position bottom
-set -g status-left-length 50
-set -g status-right-length 50
-
-# Set a custom session initialization command to set WEZTERM_PANE
-set-hook -g after-new-session "set-environment WEZTERM_PANE 1"
-set-hook -g after-new-window "set-environment WEZTERM_PANE 1"
-
-# Source this file for a Tokyo Night tmux session:
-# tmux -f ~/.tmux.tokyo-night.conf new-session -A -s main
-]]
-
--- Write tmux config file if it doesn't exist
-local function ensure_tmux_config()
-	local success, _ = wezterm.run_child_process({ "test", "-f", tmux_config_path })
-	if not success then
-		local file = io.open(tmux_config_path, "w")
-		if file then
-			file:write(tmux_config_content)
-			file:close()
-			log("Created tmux Tokyo Night theme configuration")
-		else
-			log("Failed to create tmux configuration file")
-		end
-	end
-end
-
--- Set up tmux configuration if tmux is available
-if command_exists("tmux") then
-	ensure_tmux_config()
-end
-
--- Create a function to launch tmux with the Tokyo Night theme
-local function create_tmux_launcher()
-	return wezterm.action_callback(function(window, pane)
-		-- Ensure the tmux config exists
-		ensure_tmux_config()
-
-		-- Launch tmux with our theme
-		window:perform_action(
-			wezterm.action.SpawnCommandInNewWindow({
-				args = { "tmux", "new-session", "-A", "-s", "main", "-f", tmux_config_path },
-				set_environment_variables = {
-					WEZTERM_PANE = "1",
-					NVIM_THEME = "tokyonight",
-					TOKYONIGHT_STYLE = "night",
-				},
-			}),
-			pane
-		)
-		return false
-	end)
-end
-
---------------------------------------------------
--- Additional Environment Setup
---------------------------------------------------
--- Set WEZTERM_PANE for all new processes to ensure theme detection
-config.set_environment_variables["WEZTERM_PANE"] = "1"
 
 --------------------------------------------------
 -- Keybinding System
@@ -693,21 +396,8 @@ config.keys = {
 		mods = APP_MODIFIER,
 		action = wezterm.action.SpawnCommandInNewWindow({
 			args = parse_cmd(apps.nvim),
-			set_environment_variables = {
-				WEZTERM_PANE = "1",
-				NVIM_THEME = "tokyonight",
-				TOKYONIGHT_STYLE = "night",
-			},
 		}),
 		desc = "Launch Neovim in new window",
-	},
-
-	-- Add tmux launcher with theme
-	{
-		key = "m",
-		mods = APP_MODIFIER,
-		action = create_tmux_launcher(),
-		desc = "Launch tmux with Tokyo Night theme",
 	},
 
 	-- URL launchers
@@ -747,23 +437,8 @@ table.insert(config.launch_menu, {
 })
 
 table.insert(config.launch_menu, {
-	label = "Neovim with Tokyo Night",
+	label = "Neovim",
 	args = { apps.nvim },
-	set_environment_variables = {
-		WEZTERM_PANE = "1",
-		NVIM_THEME = "tokyonight",
-		TOKYONIGHT_STYLE = "night",
-	},
-})
-
-table.insert(config.launch_menu, {
-	label = "Tmux with Tokyo Night",
-	args = { "tmux", "new-session", "-A", "-s", "main", "-f", tmux_config_path },
-	set_environment_variables = {
-		WEZTERM_PANE = "1",
-		NVIM_THEME = "tokyonight",
-		TOKYONIGHT_STYLE = "night",
-	},
 })
 
 --------------------------------------------------
@@ -775,12 +450,6 @@ end)
 
 -- Ensure configurations are available
 wezterm.on("gui-startup", function()
-	if command_exists("tmux") then
-		ensure_tmux_config()
-	end
-	if command_exists("nvim") then
-		ensure_nvim_config()
-	end
 	log("GUI started successfully")
 end)
 
